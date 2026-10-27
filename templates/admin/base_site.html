@@ -1,0 +1,6 @@
+{% extends "admin/base.html" %}
+{% block title %}{{ title }} | {{ site_title|default:_("Django site admin") }}{% endblock %}
+{% block branding %}<div id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_("Django administration") }}</a></div>{% if user.is_anonymous %}{% include "admin/color_theme_toggle.html" %}{% endif %}{% endblock %}
+{% block nav-global %}{% endblock %}
+
+{% block content_title %}{% if title %}<h1>{% if independent_site and title == 'Manage RE Revi' %}Manage {{ site_name }}{% else %}{{ title }}{% endif %}</h1>{% endif %}{% endblock %}

@@ -1,0 +1,21 @@
+<div class="visual-editor" data-visual-editor>
+<div class="visual-toolbar" role="group" aria-label="Text formatting">
+<button type="button" data-command="bold"><b>Bold</b></button>
+<button type="button" data-command="italic"><i>Italic</i></button>
+<button type="button" data-command="underline">Underline</button>
+<button type="button" data-block="p">Paragraph</button>
+<button type="button" data-block="h1">Heading 1</button>
+<button type="button" data-block="h2">Heading 2</button>
+<button type="button" data-block="h3">Heading 3</button>
+<button type="button" data-command="insertUnorderedList">Bullet list</button>
+<button type="button" data-command="insertOrderedList">Numbered list</button>
+<button type="button" data-link>Add link</button>
+<button type="button" data-command="unlink">Remove link</button>
+<button type="button" data-command="removeFormat">Clear formatting</button>
+<button type="button" data-command="undo">Undo</button>
+<button type="button" data-command="redo">Redo</button>
+</div>
+<div class="visual-surface" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Visual content editor"></div>
+{% include 'django/forms/widgets/textarea.html' %}
+<p class="help">Edit the text above, then save to publish. Select text before formatting or adding a link. Use headings, paragraphs, lists and links; pasted content is cleaned automatically.</p>
+</div>

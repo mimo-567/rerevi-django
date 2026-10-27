@@ -1,0 +1,27 @@
+[Unit]
+Description=RE Revi practice application
+After=network.target
+
+[Service]
+Type=simple
+User=rerevi
+Group=rerevi
+WorkingDirectory=/srv/rerevi/app
+EnvironmentFile=/etc/rerevi.env
+ExecStart=/srv/rerevi/venv/bin/gunicorn config.wsgi:application --bind 127.0.0.1:8000 --workers 2 --threads 2 --timeout 60 --error-logfile - --max-requests 1500 --max-requests-jitter 150
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/rerevi /var/lib/rerevi-shares
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

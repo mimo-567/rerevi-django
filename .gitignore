@@ -1,0 +1,34 @@
+# Runtime data, credentials and user uploads must never enter Git.
+.env
+.env.*
+!.env.example
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.sqlite*
+*.db
+*.log
+*.rerevi
+*.engrevi
+*.hirevi
+*.tar.gz
+*.zip
+.venv/
+venv/
+var/
+staticfiles/
+media/
+uploads/
+backups/
+mail/
+rerevi-shares/
+__pycache__/
+*.py[cod]
+.DS_Store
+initial-admin.txt
+settings.local.json
+
+# resources/ and practice/data/ contain intentionally published revision content.

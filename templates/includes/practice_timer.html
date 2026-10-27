@@ -1,0 +1,7 @@
+<section class="practice-timer" data-practice-timer data-timer-key="{{ timer_key|default:'studio' }}" aria-labelledby="practice-timer-heading">
+  <div class="practice-timer-clock"><h3 id="practice-timer-heading">Practice timer</h3><output class="practice-timer-display" data-timer-display role="timer" aria-live="off" aria-label="Time remaining">25:00</output></div>
+  <div class="practice-timer-settings"><label for="practice-timer-minutes">Minutes</label><input id="practice-timer-minutes" data-timer-minutes type="number" inputmode="numeric" min="1" max="360" step="1" value="25"><button type="button" data-timer-suggested class="secondary-button" hidden>Use paper time</button></div>
+  <div class="practice-timer-controls"><button type="button" data-timer-start class="primary-button">Start</button><button type="button" data-timer-pause class="secondary-button" disabled>Pause</button><button type="button" data-timer-reset class="secondary-button">Reset</button></div>
+  <p class="practice-timer-status" data-timer-status role="status" aria-live="polite">Ready. Start when you are ready to answer.</p>
+  <p class="practice-timer-note">Keeps counting in background tabs and after a refresh in this tab. Time running out never locks or submits your answers. {% if timer_key != 'worksheet' %}Starting a new practice set resets the timer.{% else %}Choose a custom duration for your worksheet.{% endif %}</p>
+</section>

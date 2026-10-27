@@ -1,0 +1,145 @@
+{
+  "title": "Eduqas GCSE Religious Studies Route A reusable marking guides",
+  "qualification": "Eduqas GCSE Religious Studies Route A Full Course",
+  "sources": [
+    {
+      "title": "Eduqas Newsletter – Summer 2026",
+      "url": "https://www.eduqas.co.uk/media/foveuosu/eduqas-newsletter-summer-2026-gcse-religious-studies.pdf",
+      "local_file": "eduqas_reference/eduqas-gcse-rs-newsletter-summer-2026.pdf",
+      "use": "Latest public command wording and question-specific instructions for A, B, C and D."
+    },
+    {
+      "title": "How to mark a d question in Eduqas GCSE Religious Studies – updated for 2025/26",
+      "url": "https://www.eduqas.co.uk/media/5dtfofos/how-to-mark-a-d-question-2025_.pdf",
+      "local_file": "eduqas_reference/how-to-mark-a-d-question-2025-26.pdf",
+      "use": "Latest public D rubric, band descriptors and marking guidance."
+    },
+    {
+      "title": "Summer 2025 official past-paper mark schemes",
+      "local_files": [
+        "eduqas_reference/past_papers/2025-summer-component-1-general-mark-scheme.pdf",
+        "eduqas_reference/past_papers/2025-summer-component-2-christianity-mark-scheme.pdf",
+        "eduqas_reference/past_papers/2025-summer-component-3-islam-mark-scheme.pdf"
+      ],
+      "use": "Latest public full question-specific mark schemes located for B and C, including indicative content. These give the exact source scheme for each archived question."
+    }
+  ],
+  "rubrics": [
+    {
+      "id": "eduqas_b_5mark_ao1",
+      "type": "b",
+      "marks": 5,
+      "assessment_objective": "AO1",
+      "command": "Describe",
+      "shared_by_question_type": true,
+      "exact_scheme_source": "Exact descriptor PDF assets are extracted from the corresponding Summer 2025 component mark scheme. Each question separately links its original scheme for indicative content.",
+      "current_prompt_guidance": "B questions start with Describe. The exact question stem varies; use the prompt and indicative content on the question-specific mark scheme.",
+      "official_descriptor_pdf_by_component": {
+        "component-1-general": "eduqas_reference/rubrics/b-component-1-general-official-3.pdf",
+        "component-2-christianity": "eduqas_reference/rubrics/b-component-2-christianity-official-3.pdf",
+        "component-3-islam": "eduqas_reference/rubrics/b-component-3-islam-official-3.pdf"
+      },
+      "descriptor_policy": "Display the attached official PDF table verbatim. Numerical bands are shared by question type; preserve the component-specific descriptor wording."
+    },
+    {
+      "id": "eduqas_c_8mark_ao1",
+      "type": "c",
+      "marks": 8,
+      "assessment_objective": "AO1",
+      "command": "Explain",
+      "shared_by_question_type": true,
+      "exact_scheme_source": "Exact descriptor PDF assets are extracted from the corresponding Summer 2025 component mark scheme. Each question separately links its original scheme for indicative content.",
+      "current_prompt_guidance": "Explain; use the relevant Christianity or Islam prompt and its indicative content.",
+      "official_descriptor_pdf_by_component": {
+        "component-2-christianity": "eduqas_reference/rubrics/c-component-2-christianity-official-4.pdf",
+        "component-3-islam": "eduqas_reference/rubrics/c-component-3-islam-official-4.pdf"
+      },
+      "descriptor_policy": "Display the attached official PDF table verbatim. Numerical bands are shared by question type; preserve the component-specific descriptor wording.",
+      "applies_to": {
+        "components": [
+          "component-2-christianity",
+          "component-3-islam"
+        ],
+        "part": "c"
+      }
+    },
+    {
+      "id": "eduqas_d_15mark_ao2",
+      "type": "d",
+      "marks": 15,
+      "assessment_objective": "AO2",
+      "command": "Discuss this statement. Show that you have considered more than one point of view. Refer to religious beliefs and teachings in your answer.",
+      "shared_by_question_type": true,
+      "mark_scheme_source": "Use the official mark scheme PDF linked from the question record for its question-specific indicative content.",
+      "latest_rubric_source": "https://www.eduqas.co.uk/media/5dtfofos/how-to-mark-a-d-question-2025_.pdf",
+      "mark_bands_source": "2025/26 Eduqas D-question guide, question d except Route A Component 1 2d and Route B Component 1 1d.",
+      "mark_bands_source_pages": "Use the exact band descriptors from the 2025/26 official guide, page 3. The 2026 paper wording is in the Summer 2026 newsletter.",
+      "official_descriptor_pdf": "eduqas_reference/rubrics/d-standard-official-3.pdf"
+    },
+    {
+      "id": "eduqas_d_15mark_ao2_c1_q2",
+      "type": "d",
+      "marks": 15,
+      "assessment_objective": "AO2",
+      "applies_to": {
+        "component": "component-1-general",
+        "question_number": 2
+      },
+      "command": "Discuss this statement. Show that you have considered more than one point of view. Refer to religious beliefs and teachings in your answer. Refer to non-religious beliefs, such as those held by Atheists and Humanists, in your answer.",
+      "required_perspectives": [
+        "religious beliefs and teachings",
+        "non-religious beliefs, for example Humanist or Atheist views"
+      ],
+      "mark_bands_source": "2025/26 Eduqas D-question guide, special Route A Component 1 2d band descriptors. The guide names Humanists and Atheists as examples of non-religious beliefs.",
+      "mark_bands_source_pages": "Use the exact special band descriptors from the 2025/26 official guide, page 4. The updated 2026 prompt is in the Summer 2026 newsletter.",
+      "note": "The current rubric requires a reference to non-religious beliefs. The official band descriptors name Humanists and Atheists as examples.",
+      "official_descriptor_pdf": "eduqas_reference/rubrics/d-component1-life-and-death-official-4.pdf"
+    },
+    {
+      "id": "eduqas_spag_6mark",
+      "type": "spag",
+      "marks": 6,
+      "applies_to": {
+        "components": [
+          "component-1-general",
+          "component-2-christianity"
+        ],
+        "question_number": 1,
+        "part": "d"
+      },
+      "mark_bands_source": "Use the SPaG descriptors in the matching official mark scheme. Mark the response first, then assess spelling, punctuation and grammar separately.",
+      "optional_in_practice": true,
+      "default_for_practice_papers": false,
+      "eligibility_rule": "Offer this optional SPaG score only when the source question has a separate SPaG allocation (spag_marks is not null).",
+      "scoring_rule": "When the student opts in, mark spelling, punctuation and grammar separately for up to 6 additional marks. If they leave it off, omit the 6 marks from the practice paper total.",
+      "actual_exam_note": "Up to 6 SPaG marks are allocated to 1(d) in each of Components 1 and 2. None are allocated in Component 3. In this site, SPaG scoring remains optional for eligible practice questions.",
+      "official_descriptor_pdf": "eduqas_reference/rubrics/spag-official-5.pdf"
+    },
+    {
+      "id": "eduqas_c_8mark_ao1_component1",
+      "type": "c",
+      "marks": 8,
+      "assessment_objective": "AO1",
+      "command": "Explain",
+      "shared_by_question_type": true,
+      "exact_scheme_source": "Exact descriptor PDF assets are extracted from the corresponding Summer 2025 component mark scheme. Each question separately links its original scheme for indicative content.",
+      "content_rules": [
+        {
+          "applies_to": "component-1-general",
+          "rule": "Refer to either two religions or two religious traditions. Humanism or another non-religious philosophy does not count as one of the two."
+        }
+      ],
+      "current_prompt_guidance": "C questions start with Explain. Component 1 Route A requires two religions or two religious traditions.",
+      "descriptor_policy": "Display the attached exact Component 1 C table, which explicitly assesses diversity. Two religions or two religious traditions are required.",
+      "applies_to": {
+        "component": "component-1-general",
+        "part": "c"
+      },
+      "official_descriptor_pdf": "eduqas_reference/rubrics/c-component-1-general-official-4.pdf"
+    }
+  ],
+  "binding_rule": "Reuse band tables within the applicable question type and component. Show question-specific indicative content alongside the appropriate official band table. Component 1 C and Life and Death 2(d) retain their distinct descriptors.",
+  "version_note": "This dataset uses the current 2026 command wording for question prompts, the current 2025/26 D rubric, and the latest full public question-specific B/C mark schemes located (Summer 2025). The 2026 full exam papers and schemes are in Eduqas’s password-protected portal according to its Summer 2026 newsletter.",
+  "spag_practice_setting": "Optional per practice paper; disabled by default. Only offer it on questions where the official source allocates SPaG marks.",
+  "rubric_wording_source": "Summer 2026 Eduqas newsletter, pages 2–3. Historical prompts remain stored verbatim; generated D practice instructions use the current rubric."
+}

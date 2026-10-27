@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "page_mm": [
+    210,
+    297
+  ],
+  "body_frame_mm": [
+    27.8,
+    29,
+    160,
+    232
+  ],
+  "cover_frame_mm": [
+    20,
+    27,
+    174,
+    240
+  ],
+  "border_mm": [
+    19,
+    28,
+    172,
+    239
+  ],
+  "cover": {
+    "candidate_top_mm": 275,
+    "heading_top_mm": 250,
+    "banner_top_mm": 220,
+    "title_top_mm": 208,
+    "marks_top_mm": 164,
+    "instructions_top_mm": 99,
+    "information_top_mm": 54
+  },
+  "font": "Helvetica",
+  "bold_font": "Helvetica-Bold",
+  "font_size": 11,
+  "leading": 13,
+  "heading_size": 11,
+  "border": "box",
+  "accent": "#dedede",
+  "footer": "booklet",
+  "id": "eduqas-booklet",
+  "label": "Eduqas booklet"
+}

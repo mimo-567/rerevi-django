@@ -1,0 +1,13 @@
+asgiref==3.12.1
+cffi==2.1.1
+charset-normalizer==3.5.2
+cryptography==50.0.2
+Django==5.2.18
+gunicorn==25.3.0
+Markdown==3.11.1
+packaging==26.3
+pillow==12.3.0
+pycparser==3.11
+pypdf==6.20.1
+reportlab==4.5.1
+sqlparse==0.6.0

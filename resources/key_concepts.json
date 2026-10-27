@@ -1,0 +1,683 @@
+{
+  "title": "Eduqas GCSE Religious Studies Route A key concepts",
+  "source": {
+    "title": "Glossary of Key Concepts - Both Routes, Short Course and Full Course",
+    "url": "https://resource.download.wjec.co.uk/vtc/2015-16/15-16_58/GLOSSARY%20OF%20KEY%20CONCEPTS%20-%20BOTH%20ROUTES%2C%20SC%20and%20FC.pdf",
+    "local_file": "eduqas_reference/key-concepts-glossary.pdf",
+    "scope": "Full Course Route A: Component 1 Themes 1–4, Component 2 Christianity, Component 3 Option 3 Islam."
+  },
+  "generation": {
+    "method": "Select a random concept from the chosen component and, for Component 1, the selected theme. Insert its term into the fixed stem. No AI question generation.",
+    "stem": "What is meant by the term “{term}”?",
+    "marks": 2,
+    "template_note": "This is the chosen practice stem. Real papers can use alternative wording, for example “What do Christians mean by ...?”."
+  },
+  "marking_guide": {
+    "1": "Award 1 mark for a very simple definition or a relevant example.",
+    "2": "Award 2 marks for a developed definition, with or without an example.",
+    "method": "Students self-mark by comparing their response with the indicative content; no automated marking.",
+    "accept_equivalent_wording": true,
+    "0": "No creditworthy definition or relevant example.",
+    "one_word_or_example_only": "An accurate one-word answer or an accurate example on its own receives 1 mark.",
+    "latest_guidance_source": "https://www.eduqas.co.uk/media/foveuosu/eduqas-newsletter-summer-2026-gcse-religious-studies.pdf"
+  },
+  "sharing_note": "For Components 2 and 3, use one shared concept pool for Beliefs and Practices. Do not duplicate these keywords by section.",
+  "groups": [
+    {
+      "component": "component-1-general",
+      "topic": "theme-1-relationships",
+      "shared_across_beliefs_and_practices": false,
+      "concepts": [
+        {
+          "term": "Adultery",
+          "indicative_content": "voluntary sexual intercourse between a married person and a person who is not their spouse",
+          "source_concept": "Adultery",
+          "source_indicative_content": "voluntary sexual intercourse between a married person and a person who is not their spouse",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Divorce",
+          "indicative_content": "to legally end a marriage",
+          "source_concept": "Divorce",
+          "source_indicative_content": "to legally end a marriage",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Cohabitation",
+          "indicative_content": "to live together in a sexual relationship, without being married, or in a civil partnership",
+          "source_concept": "Cohabitation",
+          "source_indicative_content": "to live together in a sexual relationship, without being married, or in a civil partnership",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Commitment",
+          "indicative_content": "a sense of dedication and obligation to someone or something",
+          "source_concept": "Commitment",
+          "source_indicative_content": "a sense of dedication and obligation to someone or something",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Contraception",
+          "indicative_content": "methods used to prevent a woman from becoming pregnant during or following sexual intercourse",
+          "source_concept": "Contraception",
+          "source_indicative_content": "methods used to prevent a woman from becoming pregnant during or following sexual intercourse",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Gender equality",
+          "indicative_content": "people of all genders enjoying the same rights and opportunities in all aspects of their lives",
+          "source_concept": "Gender equality",
+          "source_indicative_content": "people of all genders enjoying the same rights and opportunities in all aspects of their lives",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Responsibilities",
+          "indicative_content": "actions/duties you are expected to carry out",
+          "source_concept": "Responsibilities",
+          "source_indicative_content": "actions/duties you are expected to carry out",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Roles",
+          "indicative_content": "position, status or function of a person in society, as well as the characteristics and social behaviour expected of them",
+          "source_concept": "Roles",
+          "source_indicative_content": "position, status or function of a person in society, as well as the characteristics and social behaviour expected of them",
+          "source_pdf_page": 2
+        }
+      ],
+      "source_concepts": [
+        {
+          "term": "Adultery",
+          "indicative_content": "voluntary sexual intercourse between a married person and a person who is not their spouse",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Divorce",
+          "indicative_content": "to legally end a marriage",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Cohabitation",
+          "indicative_content": "to live together in a sexual relationship, without being married, or in a civil partnership",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Commitment",
+          "indicative_content": "a sense of dedication and obligation to someone or something",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Contraception",
+          "indicative_content": "methods used to prevent a woman from becoming pregnant during or following sexual intercourse",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Gender equality",
+          "indicative_content": "people of all genders enjoying the same rights and opportunities in all aspects of their lives",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Responsibilities",
+          "indicative_content": "actions/duties you are expected to carry out",
+          "source_pdf_page": 2
+        },
+        {
+          "term": "Roles",
+          "indicative_content": "position, status or function of a person in society, as well as the characteristics and social behaviour expected of them",
+          "source_pdf_page": 2
+        }
+      ]
+    },
+    {
+      "component": "component-1-general",
+      "topic": "theme-2-life-and-death",
+      "shared_across_beliefs_and_practices": false,
+      "concepts": [
+        {
+          "term": "Afterlife",
+          "indicative_content": "life after death; the belief that existence continues after physical death",
+          "source_concept": "Afterlife",
+          "source_indicative_content": "life after death; the belief that existence continues after physical death",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Environmental sustainability",
+          "indicative_content": "ensuring that the demands placed on natural resources can be met without reducing capacity to allow all people and other species of animals, as well as plant life, to live well, now and in the future.+",
+          "source_concept": "environmental sustainability",
+          "source_indicative_content": "ensuring that the demands placed on natural resources can be met without reducing capacity to allow all people and other species of animals, as well as plant life, to live well, now and in the future.+",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Euthanasia",
+          "indicative_content": "from Greek, eu ‘good’ + thanatos ‘death’. Sometimes referred to as ‘mercy killing. The act of killing or permitting the death of a person who is suffering from a serious illness.",
+          "source_concept": "Euthanasia",
+          "source_indicative_content": "from Greek, eu ‘good’ + thanatos ‘death’. Sometimes referred to as ‘mercy killing. The act of killing or permitting the death of a person who is suffering from a serious illness.",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Evolution",
+          "indicative_content": "the process by which different living creatures are believed to have developed from earlier. Less complex forms during the history of the earth.",
+          "source_concept": "Evolution",
+          "source_indicative_content": "the process by which different living creatures are believed to have developed from earlier. Less complex forms during the history of the earth.",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Abortion",
+          "indicative_content": "when a pregnancy is ended so that it does not result in the birth of a child.",
+          "source_concept": "Abortion",
+          "source_indicative_content": "when a pregnancy is ended so that it does not result in the birth of a child.",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Quality of life",
+          "indicative_content": "the extent to which life is meaningful and pleasurable",
+          "source_concept": "Quality of life",
+          "source_indicative_content": "the extent to which life is meaningful and pleasurable",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Sanctity of life",
+          "indicative_content": "the belief that life is precious, or sacred. For many religious believers, only human life holds this special status,",
+          "source_concept": "Sanctity of life",
+          "source_indicative_content": "the belief that life is precious, or sacred. For many religious believers, only human life holds this special status,",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Soul",
+          "indicative_content": "the spiritual aspect of a being; that which connects someone to God. The soul is often regarded as non-physical and as living on after physical death, in an afterlife.",
+          "source_concept": "Soul",
+          "source_indicative_content": "the spiritual aspect of a being; that which connects someone to God. The soul is often regarded as non-physical and as living on after physical death, in an afterlife.",
+          "source_pdf_page": 3
+        }
+      ],
+      "source_concepts": [
+        {
+          "term": "Afterlife",
+          "indicative_content": "life after death; the belief that existence continues after physical death",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "environmental sustainability",
+          "indicative_content": "ensuring that the demands placed on natural resources can be met without reducing capacity to allow all people and other species of animals, as well as plant life, to live well, now and in the future.+",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Euthanasia",
+          "indicative_content": "from Greek, eu ‘good’ + thanatos ‘death’. Sometimes referred to as ‘mercy killing. The act of killing or permitting the death of a person who is suffering from a serious illness.",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Evolution",
+          "indicative_content": "the process by which different living creatures are believed to have developed from earlier. Less complex forms during the history of the earth.",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Abortion",
+          "indicative_content": "when a pregnancy is ended so that it does not result in the birth of a child.",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Quality of life",
+          "indicative_content": "the extent to which life is meaningful and pleasurable",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Sanctity of life",
+          "indicative_content": "the belief that life is precious, or sacred. For many religious believers, only human life holds this special status,",
+          "source_pdf_page": 3
+        },
+        {
+          "term": "Soul",
+          "indicative_content": "the spiritual aspect of a being; that which connects someone to God. The soul is often regarded as non-physical and as living on after physical death, in an afterlife.",
+          "source_pdf_page": 3
+        }
+      ]
+    },
+    {
+      "component": "component-1-general",
+      "topic": "theme-3-good-and-evil",
+      "shared_across_beliefs_and_practices": false,
+      "concepts": [
+        {
+          "term": "Good",
+          "indicative_content": "good – that which is considered morally right, beneficial and to our advantage",
+          "source_concept": "Good/evil",
+          "source_indicative_content": "good – that which is considered morally right, beneficial and to our advantage evil – that which is considered extremely immoral, wicked and wrong",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Evil",
+          "indicative_content": "evil – that which is considered extremely immoral, wicked and wrong",
+          "source_concept": "Good/evil",
+          "source_indicative_content": "good – that which is considered morally right, beneficial and to our advantage evil – that which is considered extremely immoral, wicked and wrong",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Forgiveness",
+          "indicative_content": "to grant pardon for a wrongdoing; to give up resentment and the desire seek revenge against a wrongdoer",
+          "source_concept": "Forgiveness",
+          "source_indicative_content": "to grant pardon for a wrongdoing; to give up resentment and the desire seek revenge against a wrongdoer",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Free will",
+          "indicative_content": "the ability to make choices voluntarily and independently. The belief that nothing is pre-determined",
+          "source_concept": "Free will",
+          "source_indicative_content": "the ability to make choices voluntarily and independently. The belief that nothing is pre-determined",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Justice",
+          "indicative_content": "fairness; where everyone has equal provisions and opportunity",
+          "source_concept": "Justice",
+          "source_indicative_content": "fairness; where everyone has equal provisions and opportunity",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Morality",
+          "indicative_content": "principles and standards determining which actions are right or wrong",
+          "source_concept": "Morality",
+          "source_indicative_content": "principles and standards determining which actions are right or wrong",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Punishment",
+          "indicative_content": "a penalty given to someone for a crime or wrong they have done",
+          "source_concept": "Punishment",
+          "source_indicative_content": "a penalty given to someone for a crime or wrong they have done",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Sin",
+          "indicative_content": "deliberate immoral action, breaking a religious or moral law",
+          "source_concept": "Sin",
+          "source_indicative_content": "deliberate immoral action, breaking a religious or moral law",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Suffering",
+          "indicative_content": "pain or distress caused by injury, illness or loss. Suffering can be physical, emotional/psychological or spiritual.",
+          "source_concept": "Suffering",
+          "source_indicative_content": "pain or distress caused by injury, illness or loss. Suffering can be physical, emotional/psychological or spiritual.",
+          "source_pdf_page": 4
+        }
+      ],
+      "source_concepts": [
+        {
+          "term": "Good/evil",
+          "indicative_content": "good – that which is considered morally right, beneficial and to our advantage evil – that which is considered extremely immoral, wicked and wrong",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Forgiveness",
+          "indicative_content": "to grant pardon for a wrongdoing; to give up resentment and the desire seek revenge against a wrongdoer",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Free will",
+          "indicative_content": "the ability to make choices voluntarily and independently. The belief that nothing is pre-determined",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Justice",
+          "indicative_content": "fairness; where everyone has equal provisions and opportunity",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Morality",
+          "indicative_content": "principles and standards determining which actions are right or wrong",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Punishment",
+          "indicative_content": "a penalty given to someone for a crime or wrong they have done",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Sin",
+          "indicative_content": "deliberate immoral action, breaking a religious or moral law",
+          "source_pdf_page": 4
+        },
+        {
+          "term": "Suffering",
+          "indicative_content": "pain or distress caused by injury, illness or loss. Suffering can be physical, emotional/psychological or spiritual.",
+          "source_pdf_page": 4
+        }
+      ]
+    },
+    {
+      "component": "component-1-general",
+      "topic": "theme-4-human-rights",
+      "shared_across_beliefs_and_practices": false,
+      "concepts": [
+        {
+          "term": "Censorship",
+          "indicative_content": "the practice of suppressing and limiting access to materials considered obscene, offensive or a threat to security. People may also be restricted in their speech by censorship laws.",
+          "source_concept": "Censorship",
+          "source_indicative_content": "the practice of suppressing and limiting access to materials considered obscene, offensive or a threat to security. People may also be restricted in their speech by censorship laws.",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Discrimination",
+          "indicative_content": "acts of treating groups of people, or individuals differently, based on prejudice",
+          "source_concept": "Discrimination",
+          "source_indicative_content": "acts of treating groups of people, or individuals differently, based on prejudice",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Extremism",
+          "indicative_content": "believing in and supporting ideas that are very far from what most people consider correct or reasonable.",
+          "source_concept": "Extremism",
+          "source_indicative_content": "believing in and supporting ideas that are very far from what most people consider correct or reasonable.",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Human rights",
+          "indicative_content": "the basic entitlements of all human beings, afforded to them simply because they are human.",
+          "source_concept": "Human rights",
+          "source_indicative_content": "the basic entitlements of all human beings, afforded to them simply because they are human.",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Personal conviction",
+          "indicative_content": "something a person strongly feels or believes in",
+          "source_concept": "Personal conviction",
+          "source_indicative_content": "something a person strongly feels or believes in",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Prejudice",
+          "indicative_content": "pre-judging; judging people to be inferior or superior without cause",
+          "source_concept": "Prejudice",
+          "source_indicative_content": "pre-judging; judging people to be inferior or superior without cause",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Absolute poverty",
+          "indicative_content": "absolute poverty - an acute state of deprivation, whereby a person cannot access the most basic of their human needs.",
+          "source_concept": "Relative and absolute poverty",
+          "source_indicative_content": "absolute poverty - an acute state of deprivation, whereby a person cannot access the most basic of their human needs. relative poverty - a standard of poverty measured in relation to the standards of a society in which a person lives, e.g. living on less than X% of average UK income.",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Relative poverty",
+          "indicative_content": "relative poverty - a standard of poverty measured in relation to the standards of a society in which a person lives, e.g. living on less than X% of average UK income.",
+          "source_concept": "Relative and absolute poverty",
+          "source_indicative_content": "absolute poverty - an acute state of deprivation, whereby a person cannot access the most basic of their human needs. relative poverty - a standard of poverty measured in relation to the standards of a society in which a person lives, e.g. living on less than X% of average UK income.",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Social justice",
+          "indicative_content": "promoting a fair society by challenging injustice and valuing diversity. Ensuring that everyone has equal access to provisions, equal opportunities and rights.",
+          "source_concept": "Social justice",
+          "source_indicative_content": "promoting a fair society by challenging injustice and valuing diversity. Ensuring that everyone has equal access to provisions, equal opportunities and rights.",
+          "source_pdf_page": 5
+        }
+      ],
+      "source_concepts": [
+        {
+          "term": "Censorship",
+          "indicative_content": "the practice of suppressing and limiting access to materials considered obscene, offensive or a threat to security. People may also be restricted in their speech by censorship laws.",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Discrimination",
+          "indicative_content": "acts of treating groups of people, or individuals differently, based on prejudice",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Extremism",
+          "indicative_content": "believing in and supporting ideas that are very far from what most people consider correct or reasonable.",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Human rights",
+          "indicative_content": "the basic entitlements of all human beings, afforded to them simply because they are human.",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Personal conviction",
+          "indicative_content": "something a person strongly feels or believes in",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Prejudice",
+          "indicative_content": "pre-judging; judging people to be inferior or superior without cause",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Relative and absolute poverty",
+          "indicative_content": "absolute poverty - an acute state of deprivation, whereby a person cannot access the most basic of their human needs. relative poverty - a standard of poverty measured in relation to the standards of a society in which a person lives, e.g. living on less than X% of average UK income.",
+          "source_pdf_page": 5
+        },
+        {
+          "term": "Social justice",
+          "indicative_content": "promoting a fair society by challenging injustice and valuing diversity. Ensuring that everyone has equal access to provisions, equal opportunities and rights.",
+          "source_pdf_page": 5
+        }
+      ]
+    },
+    {
+      "component": "component-2-christianity",
+      "topic": "shared-beliefs-and-practices",
+      "shared_across_beliefs_and_practices": true,
+      "concepts": [
+        {
+          "term": "Omnibenevolent",
+          "indicative_content": "the state of being all-loving and infinitely good- a characteristic often attributed to God",
+          "source_concept": "Omnibenevolent",
+          "source_indicative_content": "the state of being all-loving and infinitely good- a characteristic often attributed to God",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Omnipotent",
+          "indicative_content": "the all-powerful, almighty and unlimited nature of God.",
+          "source_concept": "Omnipotent",
+          "source_indicative_content": "the all-powerful, almighty and unlimited nature of God.",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Trinity",
+          "indicative_content": "the three persons of God; God the Father, Son and Holy Spirit",
+          "source_concept": "Trinity",
+          "source_indicative_content": "the three persons of God; God the Father, Son and Holy Spirit",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Incarnation",
+          "indicative_content": "God becoming human in the form of Jesus",
+          "source_concept": "Incarnation",
+          "source_indicative_content": "God becoming human in the form of Jesus",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Atonement",
+          "indicative_content": "the belief that Jesus’ death on the cross healed the rift between humans and God",
+          "source_concept": "Atonement",
+          "source_indicative_content": "the belief that Jesus’ death on the cross healed the rift between humans and God",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Resurrection",
+          "indicative_content": "the belief that Jesus rose from the dead on Easter Sunday, conquering death",
+          "source_concept": "Resurrection",
+          "source_indicative_content": "the belief that Jesus rose from the dead on Easter Sunday, conquering death",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Sacraments",
+          "indicative_content": "an outward sign of an invisible and inward blessing by God. For example; Baptism, Eucharist.",
+          "source_concept": "Sacraments",
+          "source_indicative_content": "an outward sign of an invisible and inward blessing by God. For example; Baptism, Eucharist.",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Evangelism",
+          "indicative_content": "preaching of the gospel to others with the intention of converting others to the Christian faith",
+          "source_concept": "Evangelism",
+          "source_indicative_content": "preaching of the gospel to others with the intention of converting others to the Christian faith",
+          "source_pdf_page": 6
+        }
+      ],
+      "source_concepts": [
+        {
+          "term": "Omnibenevolent",
+          "indicative_content": "the state of being all-loving and infinitely good- a characteristic often attributed to God",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Omnipotent",
+          "indicative_content": "the all-powerful, almighty and unlimited nature of God.",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Trinity",
+          "indicative_content": "the three persons of God; God the Father, Son and Holy Spirit",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Incarnation",
+          "indicative_content": "God becoming human in the form of Jesus",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Atonement",
+          "indicative_content": "the belief that Jesus’ death on the cross healed the rift between humans and God",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Resurrection",
+          "indicative_content": "the belief that Jesus rose from the dead on Easter Sunday, conquering death",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Sacraments",
+          "indicative_content": "an outward sign of an invisible and inward blessing by God. For example; Baptism, Eucharist.",
+          "source_pdf_page": 6
+        },
+        {
+          "term": "Evangelism",
+          "indicative_content": "preaching of the gospel to others with the intention of converting others to the Christian faith",
+          "source_pdf_page": 6
+        }
+      ]
+    },
+    {
+      "component": "component-3-islam",
+      "topic": "option-3-shared-beliefs-and-practices",
+      "shared_across_beliefs_and_practices": true,
+      "concepts": [
+        {
+          "term": "Tawhid",
+          "indicative_content": "'oneness' in reference to God and is the basic Muslim belief in the oneness of Allah",
+          "source_concept": "Tawhid",
+          "source_indicative_content": "'oneness' in reference to God and is the basic Muslim belief in the oneness of Allah",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Prophethood",
+          "indicative_content": "('risalah' in Arabic) is the term used of the messengers of Allah, beginning with Adam and ending with the Prophet Muhammad",
+          "source_concept": "Prophethood",
+          "source_indicative_content": "('risalah' in Arabic) is the term used of the messengers of Allah, beginning with Adam and ending with the Prophet Muhammad",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Halal",
+          "indicative_content": "actions or things which are permitted within Islam, such as eating permitted foods",
+          "source_concept": "Halal (permitted)",
+          "source_indicative_content": "actions or things which are permitted within Islam, such as eating permitted foods",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Haram",
+          "indicative_content": "any actions or things which are forbidden within Islam, such as eating forbidden foods",
+          "source_concept": "Haram (forbidden)",
+          "source_indicative_content": "any actions or things which are forbidden within Islam, such as eating forbidden foods",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Greater jihad",
+          "indicative_content": "greater jihad is the daily struggle and inner spiritual striving to live as a Muslim",
+          "source_concept": "Greater/lesser jihad",
+          "source_indicative_content": "the word jihad means 'to strive' and there are two forms of jihad: • greater jihad is the daily struggle and inner spiritual striving to live as a Muslim • lesser jihad is a physical struggle or 'holy war' in defense of Islam.",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Lesser jihad",
+          "indicative_content": "lesser jihad is a physical struggle or 'holy war' in defense of Islam.",
+          "source_concept": "Greater/lesser jihad",
+          "source_indicative_content": "the word jihad means 'to strive' and there are two forms of jihad: • greater jihad is the daily struggle and inner spiritual striving to live as a Muslim • lesser jihad is a physical struggle or 'holy war' in defense of Islam.",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Mosque",
+          "indicative_content": "(‘masjid’ in Arabic), a 'place of prostration' for Muslims; it is a communal place of worship for a Muslim community",
+          "source_concept": "Mosque",
+          "source_indicative_content": "(‘masjid’ in Arabic), a 'place of prostration' for Muslims; it is a communal place of worship for a Muslim community",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Sharia",
+          "indicative_content": "a way of life; Muslims believe Allah has set out a clear path for how Muslims should live. Shariah Law is the set of moral and religious rules that put the principles set out by the Qur’an and the Hadith into practice",
+          "source_concept": "Sharia (straight path)",
+          "source_indicative_content": "a way of life; Muslims believe Allah has set out a clear path for how Muslims should live. Shariah Law is the set of moral and religious rules that put the principles set out by the Qur’an and the Hadith into practice",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Ummah",
+          "indicative_content": "means 'community' and refers to the world wide community of Muslims who share a common religious identity",
+          "source_concept": "Ummah",
+          "source_indicative_content": "means 'community' and refers to the world wide community of Muslims who share a common religious identity",
+          "source_pdf_page": 9
+        }
+      ],
+      "source_concepts": [
+        {
+          "term": "Tawhid",
+          "indicative_content": "'oneness' in reference to God and is the basic Muslim belief in the oneness of Allah",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Prophethood",
+          "indicative_content": "('risalah' in Arabic) is the term used of the messengers of Allah, beginning with Adam and ending with the Prophet Muhammad",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Halal (permitted)",
+          "indicative_content": "actions or things which are permitted within Islam, such as eating permitted foods",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Haram (forbidden)",
+          "indicative_content": "any actions or things which are forbidden within Islam, such as eating forbidden foods",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Greater/lesser jihad",
+          "indicative_content": "the word jihad means 'to strive' and there are two forms of jihad: • greater jihad is the daily struggle and inner spiritual striving to live as a Muslim • lesser jihad is a physical struggle or 'holy war' in defense of Islam.",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Mosque",
+          "indicative_content": "(‘masjid’ in Arabic), a 'place of prostration' for Muslims; it is a communal place of worship for a Muslim community",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Sharia (straight path)",
+          "indicative_content": "a way of life; Muslims believe Allah has set out a clear path for how Muslims should live. Shariah Law is the set of moral and religious rules that put the principles set out by the Qur’an and the Hadith into practice",
+          "source_pdf_page": 9
+        },
+        {
+          "term": "Ummah",
+          "indicative_content": "means 'community' and refers to the world wide community of Muslims who share a common religious identity",
+          "source_pdf_page": 9
+        }
+      ]
+    }
+  ],
+  "concept_count": 51,
+  "official_concept_count": 48,
+  "selectable_term_count": 51,
+  "count_note": "There are 48 official glossary entries across the six selected groups. Good/evil, relative/absolute poverty and greater/lesser jihad can be practised separately, giving 51 selectable terms.",
+  "definition_policy": "Source glossary definitions are preserved with line wrapping normalised. Students may use their own accurate words; an example is not required for full marks."
+}

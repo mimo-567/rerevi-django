@@ -1,0 +1,5 @@
+Django>=5.2.12,<5.3
+gunicorn>=23,<26
+reportlab>=4.4,<5
+pypdf[crypto]>=6.20.1,<7
+Markdown>=3.7,<4
