@@ -1,16 +1,53 @@
 """Public worksheet catalogue and validated, portable practice snapshots."""
 import hashlib
 import json
+import secrets
 import uuid
 from django.core import signing
 from django.core.exceptions import ValidationError
 from django.db.models import Q
-from .catalogue import COMPONENTS
+from .catalogue import COMPONENTS,spag_eligible
 from .content import safe_link
 from .models import Question, Keyword
 from .services import question_payload, keyword_payload
 
 PAPER_MARKS={'a':2,'b':5,'c':8,'d':15}
+
+def worksheet_templates():
+    rows=[]
+    for component,spec in COMPONENTS.items():
+        rows.append({'id':component+':all','label':spec['label']+' · '+spec['name'],'kind':'component','spag':False})
+        for number,title,pool in spec['sections']:
+            label=title if component=='component-1-general' else spec['name']+' · '+title
+            rows.append({'id':component+':'+str(number),'label':label,'kind':'topic','spag':spag_eligible(component,'d',number)})
+    return rows
+
+def build_template(data):
+    if not isinstance(data,dict):raise ValidationError('Choose a valid paper template.')
+    template=next((r for r in worksheet_templates() if r['id']==data.get('template')),None)
+    if template is None:raise ValidationError('Choose a valid paper template.')
+    for field in ('spag','include_extra'):
+        if field in data and type(data[field]) is not bool:raise ValidationError('Invalid template options.')
+    component,section=template['id'].rsplit(':',1)
+    spec=COMPONENTS[component]
+    sections=[s for s in spec['sections'] if section=='all' or str(s[0])==section]
+    include_spag=template['kind']=='component' or data.get('spag') is True
+    questions=public_questions().filter(component=component,part__in=('b','c','d'))
+    if data.get('include_extra',True) is not True:questions=questions.filter(source_type='official')
+    items=[];used_keywords=set()
+    for number,title,pool in sections:
+        keywords=list(Keyword.objects.filter(component=component,pool=pool,active=True).exclude(pk__in=used_keywords))
+        if not keywords:raise ValidationError('No keywords are available for '+title+'.')
+        keyword=secrets.choice(keywords);used_keywords.add(keyword.pk)
+        row=keyword_payload(keyword,number)
+        row.update(source_type='glossary',collection_id='',section_topic=title)
+        items.append(row)
+        for part in ('b','c','d'):
+            choices=list(questions.filter(question_number=number,part=part))
+            if not choices:raise ValidationError('No '+part.upper()+' questions are available for '+title+'.')
+            items.append(question_payload(secrets.choice(choices),spag=include_spag))
+    for row in items:row['revision']=fingerprint(row)
+    return sign_worksheet({'title':template['label']+' practice paper','component':component,'component_name':spec['name'],'questions':items,'instructions':'Answer all questions. Questions are arranged A, B, C and D for each topic.'})
 
 def public_questions():
     return Question.objects.filter(active=True,status='published').filter(Q(source_type='official')|Q(source_type='additional',collection__published=True,collection__permission_status='allowed')).select_related('collection')
@@ -48,7 +85,7 @@ def validate_paper(raw):
         item['part']=q['part'];item['marks']=PAPER_MARKS[q['part']]
         item['number']=int(q.get('number',index+1)) if type(q.get('number',index+1)) is int else index+1
         if not 1<=item['number']<=60: item['number']=index+1
-        item['spag']=6 if q.get('spag')==6 and item['component'] in ('component-1-general','component-2-christianity') and item['number']==1 and item['part']=='d' else 0
+        item['spag']=6 if q.get('spag')==6 and spag_eligible(item['component'],item['part'],item['number']) else 0
         for field in ('source_url','original_paper_url','original_scheme_url','rubric_url','spag_rubric_url','examiner_report_url'):
             value=text(q.get(field,''),2000)
             try: item[field]=safe_link(value)

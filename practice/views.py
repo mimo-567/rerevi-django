@@ -243,13 +243,23 @@ def help_page(request):
 
 @require_safe
 def worksheets(request):
-    return render(request,'practice/worksheets.html',{'import_requested':request.GET.get('import')=='1'})
+    from .worksheets import worksheet_templates
+    return render(request,'practice/worksheets.html',{'import_requested':request.GET.get('import')=='1','paper_templates':worksheet_templates()})
 
 @require_safe
 def worksheet_catalogue(request):
     from .worksheets import catalogue_rows
     from .models import ResourceCollection
     return JsonResponse({'questions':catalogue_rows(),'collections':list(ResourceCollection.objects.filter(published=True,permission_status='allowed').values('id','title','kind','chapter'))})
+
+@require_POST
+def worksheet_template(request):
+    from .worksheets import build_template
+    try:
+        if len(request.body)>2000:raise ValidationError('Template request is too large.')
+        return JsonResponse(build_template(json.loads(request.body)))
+    except (ValueError,TypeError,ValidationError) as error:
+        return JsonResponse({'error':' '.join(error.messages) if isinstance(error,ValidationError) else 'Invalid template options.'},status=400)
 
 @require_POST
 def worksheet_prepare(request):

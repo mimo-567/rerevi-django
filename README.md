@@ -11,6 +11,7 @@ This is the current **Django application**, published separately from the earlie
 - Choose focused practice, keyword practice or a full practice paper.
 - Select original-year Part A questions when practising a particular paper year.
 - Build worksheets from the question bank and optionally omit additional practice.
+- Start a worksheet from a full component or individual-topic A/B/C/D template. Component papers add SPaG only to eligible questions; topic sets omit it unless explicitly enabled for an eligible topic.
 - Type answers, use a timer, reveal marking guidance and self-mark with optional SPaG where applicable.
 - Download question/answer and marking PDFs in ReRevi or Eduqas-inspired layouts.
 - Export/import `.rerevi` files to reopen a practice set, optionally including your work.
