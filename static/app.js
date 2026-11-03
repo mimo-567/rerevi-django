@@ -42,7 +42,7 @@ async function build(){
  if(shareBusy){toast('Wait for the sharing request to finish before starting a new practice.');return;}
  const button=form.querySelector('[type=submit]');button.disabled=true;button.firstElementChild.textContent='Building your practice…';$('builder-error').hidden=true;
  try{
-  const response=await fetch('/api/generate/',{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify({mode,component:$('component').value,section:$('section').value,count:$('count').value,year:$('year').value,parts:[...form.querySelectorAll('[name=parts]:checked')].map(i=>i.value),spag:$('spag').checked,include_extra:$('include-extra').checked})});
+  const response=await fetch('/api/generate/',{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify({mode,component:$('component').value,section:$('section').value,count:$('count').value,year:$('year').value,parts:[...form.querySelectorAll('[name=parts]:checked')].map(i=>i.value),spag:$('spag').checked,include_extra:$('include-extra').checked,avoid:window.ReReviSelection.refs(paper?.questions||[])})});
   let data;try{data=await response.json();}catch{throw new Error('The server could not complete that request. Please try again.');}
   if(!response.ok)throw new Error(data.error||'Could not create the paper.');
   paper=data;answers={};marks={};spagMarks={};shared=null;$('share-opt-in').checked=false;$('email-share').checked=false;$('share-status').textContent='';persist();render();updateShare();$('paper-section').scrollIntoView({behavior:'smooth',block:'start'});toast('Your practice is ready. Take it at your own pace.');

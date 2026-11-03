@@ -1,7 +1,6 @@
 """Public worksheet catalogue and validated, portable practice snapshots."""
 import hashlib
 import json
-import secrets
 import uuid
 from django.core import signing
 from django.core.exceptions import ValidationError
@@ -10,6 +9,7 @@ from .catalogue import COMPONENTS,spag_eligible
 from .content import safe_link
 from .models import Question, Keyword
 from .services import question_payload, keyword_payload
+from .selection import choose_slots,previous_wording
 
 PAPER_MARKS={'a':2,'b':5,'c':8,'d':15}
 
@@ -34,18 +34,20 @@ def build_template(data):
     include_spag=template['kind']=='component' or data.get('spag') is True
     questions=public_questions().filter(component=component,part__in=('b','c','d'))
     if data.get('include_extra',True) is not True:questions=questions.filter(source_type='official')
-    items=[];used_keywords=set()
+    slots=[]
     for number,title,pool in sections:
-        keywords=list(Keyword.objects.filter(component=component,pool=pool,active=True).exclude(pk__in=used_keywords))
+        keywords=list(Keyword.objects.filter(component=component,pool=pool,active=True))
         if not keywords:raise ValidationError('No keywords are available for '+title+'.')
-        keyword=secrets.choice(keywords);used_keywords.add(keyword.pk)
-        row=keyword_payload(keyword,number)
-        row.update(source_type='glossary',collection_id='',section_topic=title)
-        items.append(row)
+        slots.append(('keyword',number,title,keywords))
         for part in ('b','c','d'):
             choices=list(questions.filter(question_number=number,part=part))
             if not choices:raise ValidationError('No '+part.upper()+' questions are available for '+title+'.')
-            items.append(question_payload(secrets.choice(choices),spag=include_spag))
+            slots.append(('question',number,title,choices))
+    items=[]
+    for (kind,number,title,pool),chosen in zip(slots,choose_slots([slot[3] for slot in slots],previous_wording(data))):
+        row=keyword_payload(chosen,number) if kind=='keyword' else question_payload(chosen,spag=include_spag)
+        if kind=='keyword':row.update(source_type='glossary',collection_id='',section_topic=title)
+        items.append(row)
     for row in items:row['revision']=fingerprint(row)
     return sign_worksheet({'title':template['label']+' practice paper','component':component,'component_name':spec['name'],'questions':items,'instructions':'Answer all questions. Questions are arranged A, B, C and D for each topic.'})
 

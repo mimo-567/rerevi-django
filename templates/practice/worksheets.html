@@ -9,4 +9,4 @@
 <dialog id="ws-share-dialog"><h2>Review before sharing</h2><p id="ws-share-preview-meta"></p><div id="ws-share-preview"></div><p id="ws-replace-warning"></p><div class="ws-actions"><button id="ws-cancel-share" type="button">Cancel</button><button id="ws-confirm-share" type="button" class="primary-button">Upload and create link</button></div></dialog>
 <dialog id="ws-focus-dialog"><h2 id="ws-focus-title"></h2><label for="ws-focus-answer">Your answer</label><textarea id="ws-focus-answer" rows="14" maxlength="30000"></textarea><button id="ws-focus-close" type="button">Return to worksheet</button></dialog>
 <form id="ws-pdf-form" method="post" action="/worksheets/pdf/" hidden>{% csrf_token %}<input name="worksheet" id="ws-pdf-data"></form>
-{% endblock %}{% block scripts %}<script src="{% static 'practice-timer.js' %}" defer></script><script src="{% static 'worksheets.js' %}" defer></script>{% endblock %}
+{% endblock %}{% block scripts %}<script src="{% static 'practice-timer.js' %}" defer></script><script src="{% static 'question-selection.js' %}" defer></script><script src="{% static 'worksheets.js' %}" defer></script>{% endblock %}

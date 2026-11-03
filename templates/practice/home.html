@@ -15,4 +15,4 @@
 <div class="toast" id="toast" role="status" hidden></div><form id="pdf-form" rel="noopener" method="post" action="/paper/pdf/" hidden>{% csrf_token %}<input name="token" id="pdf-token"><input name="theme" id="pdf-theme-value" value="classic"><input name="presentation" id="pdf-presentation" value="download"><input name="cover" id="pdf-cover-value" value="1"><input name="back_pages" id="pdf-back-pages-value" value="0"></form>
 {{ catalogue|json_script:'catalogue-data' }}
 {{ examiner_reports|json_script:'examiner-report-data' }}
-{% endblock %}{% block scripts %}<script src="{% static 'practice-timer.js' %}" defer></script><script src="{% static 'app.js' %}" defer></script>{% endblock %}
+{% endblock %}{% block scripts %}<script src="{% static 'practice-timer.js' %}" defer></script><script src="{% static 'question-selection.js' %}" defer></script><script src="{% static 'app.js' %}" defer></script>{% endblock %}

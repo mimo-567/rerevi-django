@@ -9,6 +9,7 @@ This is the current **Django application**, published separately from the earlie
 ## What it does
 
 - Choose focused practice, keyword practice or a full practice paper.
+- Random selections prefer different question wording within the set and from the current set, reusing wording only when the matching question pool is exhausted.
 - Select original-year Part A questions when practising a particular paper year.
 - Build worksheets from the question bank and optionally omit additional practice.
 - Start a worksheet from a full component or individual-topic A/B/C/D template. Component papers add SPaG only to eligible questions; topic sets omit it unless explicitly enabled for an eligible topic.

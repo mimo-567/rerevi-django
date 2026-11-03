@@ -256,7 +256,7 @@ def worksheet_catalogue(request):
 def worksheet_template(request):
     from .worksheets import build_template
     try:
-        if len(request.body)>2000:raise ValidationError('Template request is too large.')
+        if len(request.body)>16000:raise ValidationError('Template request is too large.')
         return JsonResponse(build_template(json.loads(request.body)))
     except (ValueError,TypeError,ValidationError) as error:
         return JsonResponse({'error':' '.join(error.messages) if isinstance(error,ValidationError) else 'Invalid template options.'},status=400)

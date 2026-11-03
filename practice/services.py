@@ -1,4 +1,3 @@
-import secrets
 import json
 from functools import lru_cache
 from pathlib import Path
@@ -9,7 +8,7 @@ from .catalogue import COMPONENTS, MARKS, rubric_id, spag_eligible
 from .models import Question, Keyword, Rubric
 from .answer_space import answer_line_count
 from .examiner_reports import report_fields
-RNG = secrets.SystemRandom()
+from .selection import choose_slots,previous_wording
 STANDARD_D = ['Discuss this statement.', 'Show that you have considered more than one point of view.', 'Refer to religious beliefs and teachings in your answer.']
 SPECIAL_D = 'Refer to non-religious beliefs, such as those held by Atheists and Humanists, in your answer.'
 
@@ -55,6 +54,7 @@ def generate_paper(data):
     if component not in COMPONENTS: raise ValidationError('Choose a valid component.')
     mode=data.get('mode','keywords')
     if mode not in ('keywords','custom','full'): raise ValidationError('Choose a valid practice mode.')
+    avoid=previous_wording(data)
     spec=COMPONENTS[component]
     section=data.get('section','all')
     sections=spec['sections']
@@ -70,30 +70,32 @@ def generate_paper(data):
     if not include_extra or year not in ('all','',None): pool=pool.filter(source_type='official')
     if year not in ('all','',None): pool=pool.filter(year=parse_int(year,'Year',2018,2100))
     if mode=='full':
-        sections=spec['sections']; chosen_keywords=set()
-        for number,title,keypool in sections:
-            source_a=None
+        slots=[]
+        for number,topic,keypool in spec['sections']:
+            source_a=None;fixed=None
             if year not in ('all','',None):
                 source_a=past_paper_a().get(f'{int(year)}:{component}:{number}')
-                if not source_a: raise ValidationError(f'No original Part A question is recorded for {title} in {year}. Choose another year or Any year.')
-                k=Keyword.objects.filter(component=component,pool=keypool,active=True,term__iexact=source_a['term']).first()
-                if not k: raise ValidationError(f"The original {year} keyword for {title} ({source_a['term']}) is unavailable. Restore it in administration or choose another year.")
-            else:
-                candidates=list(Keyword.objects.filter(component=component,pool=keypool,active=True).exclude(pk__in=chosen_keywords))
-                if not candidates: raise ValidationError(f'No keywords available for {title}. Add one in administration.')
-                k=RNG.choice(candidates)
-            chosen_keywords.add(k.pk);items.append(keyword_payload(k,number,source_a))
+                if not source_a:raise ValidationError(f'No original Part A question is recorded for {topic} in {year}. Choose another year or Any year.')
+                fixed=Keyword.objects.filter(component=component,pool=keypool,active=True,term__iexact=source_a['term']).first()
+                if not fixed:raise ValidationError(f"The original {year} keyword for {topic} ({source_a['term']}) is unavailable. Restore it in administration or choose another year.")
+            candidates=list(Keyword.objects.filter(component=component,pool=keypool,active=True))
+            if not candidates:raise ValidationError(f'No keywords available for {topic}. Add one in administration.')
+            slots.append({'kind':'keyword','number':number,'source':source_a,'fixed':fixed,'pool':candidates})
             for part in ('b','c','d'):
                 candidates=list(pool.filter(question_number=number,part=part))
-                if not candidates: raise ValidationError(f'No {part.upper()} question is available for {title} with this year filter.')
-                items.append(question_payload(RNG.choice(candidates),spag))
+                if not candidates:raise ValidationError(f'No {part.upper()} question is available for {topic} with this year filter.')
+                slots.append({'kind':'question','number':number,'fixed':None,'pool':candidates})
+        chosen=iter(choose_slots([slot['pool'] for slot in slots if slot['fixed'] is None],avoid))
+        for slot in slots:
+            row=slot['fixed'] if slot['fixed'] is not None else next(chosen)
+            items.append(keyword_payload(row,slot['number'],slot.get('source')) if slot['kind']=='keyword' else question_payload(row,spag))
         title=spec['label']+' · Full practice paper';minutes=spec['minutes']
     elif mode=='keywords':
         pools={s[2] for s in sections}
         candidates=list(Keyword.objects.filter(component=component,pool__in=pools,active=True))
         count=parse_int(data.get('count',8),'Number of keywords',1,51)
         if count>len(candidates): raise ValidationError(f'This selection has {len(candidates)} different keywords. Choose that many or fewer.')
-        items=[keyword_payload(k,i+1) for i,k in enumerate(RNG.sample(candidates,count))]
+        items=[keyword_payload(k,i+1) for i,k in enumerate(choose_slots([candidates]*count,avoid))]
         title=spec['label']+' · Keyword practice';minutes=None;spag=False
     else:
         parts=data.get('parts',['b','c','d'])
@@ -101,7 +103,7 @@ def generate_paper(data):
         candidates=list(pool.filter(question_number__in=[s[0] for s in sections],part__in=parts))
         count=parse_int(data.get('count',6),'Number of questions',1,30)
         if count>len(candidates): raise ValidationError(f'Only {len(candidates)} matching questions are available. Reduce the count or widen your filters.')
-        items=[question_payload(q,spag) for q in RNG.sample(candidates,count)]
+        items=[question_payload(q,spag) for q in choose_slots([candidates]*count,avoid)]
         title=spec['label']+' · Focused practice';minutes=None
     paper={'id':uuid.uuid4().hex,'title':title,'component':component,'component_name':spec['name'],'mode':mode,'minutes':minutes,'spag_enabled':spag,'questions':items,'total_marks':sum(x['marks']+x['spag'] for x in items)}
     snapshot={'id':paper['id'],'component':component,'mode':mode,'title':title,'minutes':minutes,'spag':spag,'items':[{'kind':i['kind'],'id':i['id'],'number':i['number'],**({'past_paper_a':i['past_paper_a']} if 'past_paper_a' in i else {})} for i in items]}
