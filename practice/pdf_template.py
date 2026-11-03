@@ -26,13 +26,18 @@ class TemplateCover(Flowable):
         self.reference=reference;self.back_pages=back_pages;self.profile=profile
         self.width=174*mm;self.height=240*mm
     def draw(self):
-        c=self.canv;t=self.profile;pos=t['cover'];paper=self.paper
+        c=self.canv;t=self.profile;pos=t['cover'];paper=self.paper;cover=paper.get('cover',{})
         c.saveState();c.translate(-20*mm,-27*mm)
         regular=t['font'];bold=t['bold_font'];accent=colors.HexColor(t['accent'])
-        def text(value,x,top,width=170,size=10,b=False):
+        def text(value,x,top,width=170,size=10,b=False,max_height=None):
             style=ParagraphStyle('CoverField',fontName=bold if b else regular,fontSize=size,leading=size*1.18)
             p=Paragraph(escape(str(value)).replace('\n','<br/>'),style)
-            _,height=p.wrap(width*mm,250*mm);p.drawOn(c,x*mm,top*mm-height)
+            _,height=p.wrap(width*mm,250*mm)
+            while max_height and height>max_height*mm and style.fontSize>6:
+                style.fontSize-=.5;style.leading=style.fontSize*1.18
+                p=Paragraph(escape(str(value)).replace('\n','<br/>'),style)
+                _,height=p.wrap(width*mm,250*mm)
+            p.drawOn(c,x*mm,top*mm-height)
             return height/mm
         def box(x,y,w,h,fill=False):c.rect(x*mm,y*mm,w*mm,h*mm,fill=int(fill))
         c.setStrokeColor(colors.black);c.setFillColor(colors.black);c.setLineWidth(.55)
@@ -41,7 +46,7 @@ class TemplateCover(Flowable):
             text('MARKING BOOKLET',20,251,170,24,True)
             y=229
             y-=text(paper['title'],20,y,170,14,True)+5
-            y-=text(paper.get('component_name','Mixed topics'),20,y,170,11)+5
+            y-=text(cover.get('subtitle') or paper.get('component_name','Mixed topics'),20,y,170,11)+5
             y-=text('Matching paper reference: '+self.reference,20,y,170,11)+5
             y-=text(f'{len(paper["questions"])} questions · {paper["total_marks"]} available marks',20,y,170,11)+15
             y-=text('HOW TO USE THIS BOOKLET',20,y,170,12,True)+7
@@ -54,6 +59,7 @@ class TemplateCover(Flowable):
             y-=10
             y-=text('UNOFFICIAL PRACTICE',20,y,170,12,True)+7
             text('Independently produced by RE Revi. Official source materials and additional practice are identified separately. This is a marking reference, not a candidate answer booklet.',20,y,170,10)
+            if cover.get('information'):text(cover['information'],20,y-25,170,10)
             c.restoreState();return
         if self.options.get('identity_fields',True):
             top=pos['candidate_top_mm']
@@ -72,9 +78,9 @@ class TemplateCover(Flowable):
         c.setFont(bold,12);c.drawString(49*mm,(y-5.8)*mm,banner);c.setFillColor(colors.black)
         title_top=pos['title_top_mm']
         h=text('RELIGIOUS STUDIES Route A',49,title_top,141,14,True)
-        h+=text(paper.get('component_name','Mixed topics'),49,title_top-h-2,141,12,True)+2
+        h+=text(cover.get('subtitle') or paper.get('component_name','Mixed topics'),49,title_top-h-2,141,12,True)+2
         h+=text(paper['title'],49,title_top-h-2,141,9)+2
-        timing=(str(paper['minutes'])+' minutes') if paper.get('minutes') and self.label in ('Practice question paper','Answer booklet') else 'Practice time: __________________'
+        timing='Time allowed: '+str(paper.get('minutes') or sum(q['marks'] for q in paper['questions']))+' minutes'
         text(timing,49,title_top-h-3,141,11)
         text('UNOFFICIAL PRACTICE · Eduqas Route A content',20,174,170,8,True)
         rows=[['For marking use only','',''],['Question / style','Maximum\nmark','Mark\nawarded']]
@@ -96,11 +102,12 @@ class TemplateCover(Flowable):
         if self.label=='Marking pack':instructions='Use this pack with the practice set bearing the same reference. Indicative content is guidance, not an exhaustive checklist. Additional questions may have general criteria only.'
         elif self.label=='Continuation sheets':instructions='Use these sheets with the matching practice set. Write the question number clearly beside each continued answer.'
         else:instructions='Use black ink or black ball-point pen.\nWrite your details in the spaces above. Answer the selected questions.\nWrite in the spaces provided. Label any continued answers with the question number.'
-        y-=8;y-=text(instructions,20,y,170,10)
+        y-=8;y-=text(cover.get('instructions') or instructions,20,y,170,10)
         note=str(paper.get('instructions') or '')
-        if note:y-=text(note[:220]+('… See question pages.' if len(note)>220 else ''),20,y-2,170,9)+2
+        if note and not cover.get('instructions'):y-=text(note[:220]+('… See question pages.' if len(note)>220 else ''),20,y-2,170,9)+2
         y=min(pos['information_top_mm'],y-12)
         text('INFORMATION FOR CANDIDATES',20,y,170,10,True)
         information='Marks are shown in brackets beside each question. SPaG is included only where shown.\nThis is an independently produced ReRevi practice document, not an official exam paper.\nThe selected visual theme does not change the Eduqas Route A specification or marking.'
-        text(information,20,y-8,170,9)
+        if cover.get('information'):information=cover['information']+'\nUnofficial ReRevi practice. Source materials retain their original attribution.'
+        text(information,20,y-8,170,9,max_height=max(10,y-40))
         c.restoreState()

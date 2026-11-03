@@ -93,7 +93,14 @@ def validate_paper(raw):
         item['collection_id']=str(q.get('collection_id',''))[:30]
         if q.get('past_paper_a'): item['past_paper_a']=text(q['past_paper_a'],150)
         result.append(item)
-    paper={'id':text(raw.get('id',uuid.uuid4().hex),100),'title':text(raw.get('title','My practice worksheet'),200),'component':text(raw.get('component','mixed'),50),'component_name':text(raw.get('component_name','Mixed topics'),200),'mode':'worksheet','minutes':None,'spag':any(q['spag'] for q in result),'questions':result,'instructions':text(raw.get('instructions','Answer the selected questions.'),3000),'reference':text(raw.get('reference',''),50)}
+    minutes=raw.get('minutes')
+    if minutes is None:minutes=sum(q['marks'] for q in result)
+    if type(minutes) is not int or not 1<=minutes<=1440:raise ValidationError('Time allowed must be a whole number from 1 to 1440 minutes.')
+    cover=raw.get('cover',{})
+    if not isinstance(cover,dict):raise ValidationError('Invalid first-page settings.')
+    cover={key:text(cover.get(key,''),limit) for key,limit in [('subtitle',100),('instructions',350),('information',250)]}
+    if len(cover['instructions'].splitlines())>4 or len(cover['information'].splitlines())>3:raise ValidationError('Keep cover instructions to 4 lines and additional information to 3 lines.')
+    paper={'id':text(raw.get('id',uuid.uuid4().hex),100),'title':text(raw.get('title','My practice worksheet'),200),'component':text(raw.get('component','mixed'),50),'component_name':text(raw.get('component_name','Mixed topics'),200),'mode':'worksheet','minutes':minutes,'cover':cover,'spag':any(q['spag'] for q in result),'questions':result,'instructions':text(raw.get('instructions','Answer the selected questions.'),3000),'reference':text(raw.get('reference',''),50)}
     paper['total_marks']=sum(q['marks']+q['spag'] for q in result)
     paper['reference']=paper['reference'] or hashlib.sha256(json.dumps(result,sort_keys=True).encode()).hexdigest()[:10].upper()
     return paper

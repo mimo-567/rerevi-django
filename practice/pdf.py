@@ -89,7 +89,7 @@ def pdf_finish_options(options,default_cover=True):
     if not 0<=back_pages<=10:raise ValidationError('Choose 0–10 additional pages.')
     return options.get('cover',default_cover) is True,back_pages
 
-def exam_cover(paper,document_label,width,back_pages=0):
+def exam_cover(paper,document_label,width,back_pages=0,options=None):
     """An independently branded exam-style cover for every document type."""
     if document_label=='Marking pack':return marking_cover(paper,width)
     from reportlab.platypus import Table,TableStyle
@@ -104,12 +104,15 @@ def exam_cover(paper,document_label,width,back_pages=0):
         [p('Class: ____________________________'),p('Date: ______________________')],
     ],colWidths=[width*.60,width*.40])
     candidate.setStyle(TableStyle([('BOX',(0,0),(-1,-1),.7,colors.black),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),4)]))
-    content=[p('RE REVI · GCSE RELIGIOUS STUDIES · ROUTE A',small),Spacer(1,5*mm),candidate,Spacer(1,6*mm),p(paper['title'],heading),p(document_label+' · '+paper.get('component_name','Religious Studies')),p('UNOFFICIAL PRACTICE — independently produced by RE Revi',small)]
+    cover=paper.get('cover',{})
+    content=[p('RE REVI · GCSE RELIGIOUS STUDIES · ROUTE A',small),Spacer(1,5*mm)]
+    if (options or {}).get('identity_fields',True):content.extend([candidate,Spacer(1,6*mm)])
+    content.extend([p(paper['title'],heading),p(document_label+' · '+(cover.get('subtitle') or paper.get('component_name','Religious Studies'))),p('UNOFFICIAL PRACTICE — independently produced by RE Revi',small)])
     reference=paper.get('reference') or str(paper.get('id',''))[:10].upper()
     if reference:content.append(p('Paper reference: '+reference,small))
     if paper.get('minutes'):
         minutes=paper['minutes'];content.append(p(f'Time allowed: {minutes} minutes'))
-    else:content.append(p('Practice time: ____________________'))
+    else:content.append(p(f"Time allowed: {sum(q['marks'] for q in paper['questions'])} minutes"))
     rows=[[p('Question / style',small),p('Maximum marks',small),p('Your mark',small)]]
     if paper.get('mode')=='full':
         for number in sorted({q['number'] for q in paper['questions']}):
@@ -131,12 +134,14 @@ def exam_cover(paper,document_label,width,back_pages=0):
         instructions='Use these sheets with the matching practice paper. Write your name and the question number(s) clearly on each sheet.'
     else:
         instructions='Use black ink or black ball-point pen. Follow the instructions in your practice set. Write answers in the spaces provided and label any continued answers clearly.'
-    content.append(p(instructions))
+    content.append(p(cover.get('instructions') or instructions))
     if paper.get('mode')=='full':content.append(p('Answer all questions. The marks for each question are shown in brackets. Refer to relevant religious wisdom and authority where required.'))
-    elif paper.get('instructions'):
+    elif paper.get('instructions') and not cover.get('instructions'):
         text=paper['instructions']
         content.append(p(text[:180]+('… See the full worksheet instructions on the following page.' if len(text)>180 else '')))
-    content.extend([p('INFORMATION',ParagraphStyle('CoverInformation',parent=body,fontName=BOLD)),p('SPaG marks are included only where shown. This is an unofficial practice document, not an Eduqas examination paper. Official source material and additional practice are identified separately.',small),PageBreak()])
+    content.append(p('INFORMATION',ParagraphStyle('CoverInformation',parent=body,fontName=BOLD)))
+    if cover.get('information'):content.append(p(cover['information'],small))
+    content.extend([p('SPaG marks are included only where shown. This is an unofficial practice document, not an Eduqas examination paper. Official source material and additional practice are identified separately.',small),PageBreak()])
     return content
 
 
@@ -148,4 +153,4 @@ def marking_cover(paper,width):
     subheading=ParagraphStyle('MarkingCoverSection',parent=body,fontName=BOLD,fontSize=13,leading=18)
     def p(value,style=body):return Paragraph(escape(str(value)).replace('\n','<br/>'),style)
     reference=paper.get('reference') or str(paper.get('id',''))[:10].upper()
-    return [p('RE REVI · EDUQAS GCSE RELIGIOUS STUDIES ROUTE A',body),Spacer(1,10*mm),p('Marking booklet',heading),p(paper['title'],subheading),p(paper.get('component_name','Mixed topics')),p('Matching paper reference: '+reference),p(f'{len(paper["questions"])} questions · {paper["total_marks"]} available marks'),Spacer(1,10*mm),p('HOW TO USE THIS BOOKLET',subheading),p('Use this guide with the question paper bearing the same reference. Read each question alongside its marking criteria and indicative content.'),p('Indicative content is a guide, not an exhaustive checklist. Accurate answers in your own words may receive credit. Additional questions may have general criteria only; missing indicative content is not an answer key.'),p('SPaG criteria apply only to questions where SPaG is included. Use the original scheme links for further guidance.'),Spacer(1,8*mm),p('UNOFFICIAL PRACTICE',subheading),p('Independently produced by RE Revi. Official source materials and additional practice are identified separately. This is a marking reference, not a candidate answer booklet.'),PageBreak()]
+    return [p('RE REVI · EDUQAS GCSE RELIGIOUS STUDIES ROUTE A',body),Spacer(1,10*mm),p('Marking booklet',heading),p(paper['title'],subheading),p(paper.get('cover',{}).get('subtitle') or paper.get('component_name','Mixed topics')),p('Matching paper reference: '+reference),p(f'{len(paper["questions"])} questions · {paper["total_marks"]} available marks'),Spacer(1,10*mm),p('HOW TO USE THIS BOOKLET',subheading),p('Use this guide with the question paper bearing the same reference. Read each question alongside its marking criteria and indicative content.'),p('Indicative content is a guide, not an exhaustive checklist. Accurate answers in your own words may receive credit. Additional questions may have general criteria only; missing indicative content is not an answer key.'),p('SPaG criteria apply only to questions where SPaG is included. Use the original scheme links for further guidance.'),Spacer(1,8*mm),p('UNOFFICIAL PRACTICE',subheading),p('Independently produced by RE Revi. Official source materials and additional practice are identified separately. This is a marking reference, not a candidate answer booklet.'),*([p(paper['cover']['information'])] if paper.get('cover',{}).get('information') else []),PageBreak()]

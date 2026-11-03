@@ -74,7 +74,7 @@ def make_continuation_pdf(paper,options):
             c.showPage();c.save()
         else:
             doc=SimpleDocTemplate(stream,pagesize=A4,leftMargin=18*mm,rightMargin=18*mm,topMargin=20*mm,bottomMargin=20*mm,title=paper['title']+' — Continuation sheets',author='RE Revi')
-            content=exam_cover(paper,'Continuation sheets',174*mm,back_pages)
+            content=exam_cover(paper,'Continuation sheets',174*mm,back_pages,options=options)
             content.pop()  # Standalone cover needs no trailing page break.
             def footer(c,d):classic_footer(c,d.page,paper,'Continuation sheets')
             doc.build(content,onFirstPage=footer,onLaterPages=footer)

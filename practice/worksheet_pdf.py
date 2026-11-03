@@ -35,7 +35,7 @@ def make_worksheet_pdf(paper,options,kind):
     small=ParagraphStyle('Small',parent=normal,fontSize=8.5*scale,leading=13*scale)
     def p(value,style=normal): return Paragraph(escape(str(value)).replace('\n','<br/>'),style)
     labels={'questions':'Question paper and answer booklet','booklet':'Answer booklet','marking':'Marking pack','continuation':'Continuation sheets'}
-    cover_content=exam_cover(paper,labels[kind],width,back_pages) if include_cover else []
+    cover_content=exam_cover(paper,labels[kind],width,back_pages,options=options) if include_cover else []
     content=[p(paper['title'],heading),p(labels[kind]+' · Reference '+paper['reference'],small),p('RE Revi · Unofficial practice · '+str(paper['total_marks'])+' marks',small)]
     if kind!='marking' and options.get('identity_fields',True): content += [p('Name: ____________________  Class: __________  Date: __________',small)]
     content += [p(paper['instructions']),Spacer(1,5*mm)]
