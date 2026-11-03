@@ -15,7 +15,7 @@ This is the current **Django application**, published separately from the earlie
 - Start a worksheet from a full component or individual-topic A/B/C/D template. Component papers add SPaG only to eligible questions; topic sets omit it unless explicitly enabled for an eligible topic.
 - Type answers, use a timer, reveal marking guidance and self-mark with optional SPaG where applicable.
 - Download question/answer and marking PDFs in ReRevi or Eduqas-inspired layouts.
-- Edit worksheet first-page subtitles, instructions and additional information, with automatic whole-paper timing or a custom duration. Cover settings are preserved in practice files and saved templates.
+- Edit worksheet first-page text in a visual paper editor with an actual PDF preview in either theme, automatic whole-paper timing or a custom duration. Cover settings are preserved in practice files and saved templates.
 - Export/import `.rerevi` files to reopen a practice set, optionally including your work.
 - Optionally share answers using expiring private links, with separate deletion controls.
 - Manage questions, resources, announcements, Markdown articles, FAQs and feedback through Django admin.
