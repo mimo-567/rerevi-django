@@ -1,3 +1,4 @@
+from .numbering import question_label,group_heading
 from .examiner_reports import report_paragraphs
 """Independent exam-booklet theme with regenerated content and page furniture."""
 from html import escape
@@ -115,19 +116,23 @@ def make_exam_booklet(paper,options,kind='questions'):
         if cover:content.pop()
         continued_pages(continuation,'Continuation sheet')
     else:
-        previous_number=None;previous_topic=None
+        previous_number=None;previous_topic=None;previous_group=None
         for index,q in enumerate(paper['questions']):
             full=paper.get('mode')=='full'
-            topic=q.get('section_topic') or q.get('topic','')
-            if full and q['number']!=previous_number:
+            topic=q['layout']['group'] if paper.get('numbering')=='exam' else (q.get('section_topic') or q.get('topic',''))
+            tree=paper.get('numbering')=='exam'
+            if tree and q['layout']['group']!=previous_group:
+                if index and options.get('breaks') in ('topic','question'):content.append(PageBreak())
+                content.append(p(group_heading(q),heading))
+            elif full and q['number']!=previous_number:
                 if index:content.append(PageBreak())
                 section=next((s[1] for s in COMPONENTS.get(q.get('component',''),{}).get('sections',[]) if s[0]==q['number']),topic)
                 content.append(p(f'{q["number"]}. {section}',heading))
             elif full and q['part'] in ('c','d'):content.append(PageBreak())
             elif index and (options.get('breaks')=='question' or options.get('breaks')=='topic' and topic!=previous_topic or q['part'] in ('c','d')):content.append(PageBreak())
-            number=f'({q["part"]})' if full else f'{index+1} ({q["part"]})'
+            number=question_label(paper,q,index) if tree else (f'({q["part"]})' if full else f'{index+1} ({q["part"]})')
             mark=f'[{q["marks"]}]'+(f' + [{q["spag"]} SPaG]' if q.get('spag') else '')
-            prompt=Table([[p(number),p(q['prompt']),p(mark,ParagraphStyle('Marks',parent=body,alignment=2))]],colWidths=[11*mm,126*mm,23*mm])
+            prompt=Table([[p(number),p(q['prompt']),p(mark,ParagraphStyle('Marks',parent=body,alignment=2))]],colWidths=[17*mm,120*mm,23*mm] if tree else [11*mm,126*mm,23*mm])
             prompt.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(-1,-1),0),('TOPPADDING',(0,0),(-1,-1),0),('BOTTOMPADDING',(0,0),(-1,-1),1)]))
             if kind=='marking':
                 content.extend([prompt,p(q.get('scheme_note',''),small),p(q.get('indicative_content') or 'No question-specific mark scheme supplied. Use general criteria as guidance; self-marking is optional.')])
@@ -140,6 +145,6 @@ def make_exam_booklet(paper,options,kind='questions'):
                 if kind=='booklet' or options.get('lined_questions',True):
                     content.extend([KeepTogether([prompt,AnswerLines(2,width,spacing)]),AnswerLines(lines-2,width,spacing)])
                 else:content.append(prompt)
-            content.append(Spacer(1,3*mm));previous_number=q['number'];previous_topic=topic
+            content.append(Spacer(1,3*mm));previous_number=q['number'];previous_topic=topic;previous_group=q.get('layout',{}).get('group')
     doc.build(content,canvasmaker=partial(NumberedBookletCanvas,extra_pages=back_pages))
     return append_additional_pages(stream.getvalue(),back_pages,paper,theme=selected_theme(options))

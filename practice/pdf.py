@@ -114,7 +114,13 @@ def exam_cover(paper,document_label,width,back_pages=0,options=None):
         minutes=paper['minutes'];content.append(p(f'Time allowed: {minutes} minutes'))
     else:content.append(p(f"Time allowed: {sum(q['marks'] for q in paper['questions'])} minutes"))
     rows=[[p('Question / style',small),p('Maximum marks',small),p('Your mark',small)]]
-    if paper.get('mode')=='full':
+    if paper.get('numbering')=='exam':
+        groups={}
+        for q in paper['questions']:
+            entry=groups.setdefault(q['layout']['group'],{'number':q['layout']['number'],'marks':0})
+            entry['marks']+=q['marks']
+        for entry in groups.values():rows.append([p('Question '+str(entry['number']),small),p(entry['marks'],small),''])
+    elif paper.get('mode')=='full':
         for number in sorted({q['number'] for q in paper['questions']}):
             maximum=sum(q['marks'] for q in paper['questions'] if q['number']==number)
             rows.append([p('Question '+str(number),small),p(maximum,small),''])

@@ -10,6 +10,7 @@ from .content import safe_link
 from .models import Question, Keyword
 from .services import question_payload, keyword_payload
 from .selection import choose_slots,previous_wording
+from .numbering import validate_layout,validate_tree
 
 PAPER_MARKS={'a':2,'b':5,'c':8,'d':15}
 
@@ -94,7 +95,11 @@ def validate_paper(raw):
             except ValueError: item[field]=''
         item['collection_id']=str(q.get('collection_id',''))[:30]
         if q.get('past_paper_a'): item['past_paper_a']=text(q['past_paper_a'],150)
+        if q.get('layout') is not None:item['layout']=validate_layout(q['layout'])
         result.append(item)
+    numbering=raw.get('numbering','sequential')
+    if numbering not in ('sequential','exam'):raise ValidationError('Choose sequential or exam-style numbering.')
+    if numbering=='exam':validate_tree(result)
     minutes=raw.get('minutes')
     if minutes is None:minutes=sum(q['marks'] for q in result)
     if type(minutes) is not int or not 1<=minutes<=1440:raise ValidationError('Time allowed must be a whole number from 1 to 1440 minutes.')
@@ -102,7 +107,7 @@ def validate_paper(raw):
     if not isinstance(cover,dict):raise ValidationError('Invalid first-page settings.')
     cover={key:text(cover.get(key,''),limit) for key,limit in [('subtitle',100),('instructions',350),('information',250)]}
     if len(cover['instructions'].splitlines())>4 or len(cover['information'].splitlines())>3:raise ValidationError('Keep cover instructions to 4 lines and additional information to 3 lines.')
-    paper={'id':text(raw.get('id',uuid.uuid4().hex),100),'title':text(raw.get('title','My practice worksheet'),200),'component':text(raw.get('component','mixed'),50),'component_name':text(raw.get('component_name','Mixed topics'),200),'mode':'worksheet','minutes':minutes,'cover':cover,'spag':any(q['spag'] for q in result),'questions':result,'instructions':text(raw.get('instructions','Answer the selected questions.'),3000),'reference':text(raw.get('reference',''),50)}
+    paper={'id':text(raw.get('id',uuid.uuid4().hex),100),'title':text(raw.get('title','My practice worksheet'),200),'component':text(raw.get('component','mixed'),50),'component_name':text(raw.get('component_name','Mixed topics'),200),'mode':'worksheet','numbering':numbering,'minutes':minutes,'cover':cover,'spag':any(q['spag'] for q in result),'questions':result,'instructions':text(raw.get('instructions','Answer the selected questions.'),3000),'reference':text(raw.get('reference',''),50)}
     paper['total_marks']=sum(q['marks']+q['spag'] for q in result)
     paper['reference']=paper['reference'] or hashlib.sha256(json.dumps(result,sort_keys=True).encode()).hexdigest()[:10].upper()
     return paper

@@ -70,6 +70,8 @@ If the bank doesn't have enough matching questions, reduce the number or widen t
 
 The worksheet workspace lets you pick individual questions, start from a component or topic template, or use **Pick random questions** and **Pick questions to match marks**. Apply its filters first; those buttons replace the current set. You can also edit the front page visually, preview the PDF and make worksheet versions.
 
+Open **Question numbers and drag-and-drop organiser** in section 3 and enable **Use exam-style question groups** to build a tree such as **1. Christian Beliefs → (a), (b), (c), (d)**. Component and topic templates enable this automatically. Edit the main number, heading and subquestion labels, or add a new main question group. Drag questions from the bank or another group into place; drag a group handle to move the whole group. The **Up**, **Down** and group-menu controls also work without dragging. **Renumber main questions in order** updates the main display numbers. The original question styles, marks, SPaG eligibility and marking guidance stay attached to the questions. Your numbering is kept in PDFs, `.rerevi` files, saved worksheet templates, worksheet versions and shared-answer snapshots.
+
 Found a confusing label or a question that needs checking? Use the question's report control or the [feedback page](/feedback/). Your feedback helps make ReRevi easier to use.
 
 **Zafir Shirazi**

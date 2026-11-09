@@ -7,6 +7,7 @@ from reportlab.lib.units import mm
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, KeepTogether
 from django.core.exceptions import ValidationError
 from .pdf import FONT, BOLD, AnswerLines, exam_cover, pdf_finish_options
+from .numbering import question_label,group_heading
 from .answer_space import answer_line_count, LINE_PITCH_POINTS, CONTINUATION_LINES, CONTINUATION_PITCH_POINTS
 
 def make_worksheet_pdf(paper,options,kind):
@@ -45,11 +46,15 @@ def make_worksheet_pdf(paper,options,kind):
             if page: content.append(PageBreak())
             content += [p(paper['title'][:80],small),p('Continuation sheet · Reference '+paper['reference'],small),p('Name: ____________________    Question number(s): __________',small),Spacer(1,3*mm),AnswerLines(CONTINUATION_LINES,width,CONTINUATION_PITCH_POINTS)]
     else:
-        previous=None
+        previous=None;previous_group=None
         for index,q in enumerate(paper['questions']):
-            topic=q.get('section_topic') or q['topic']
+            topic=q['layout']['group'] if paper.get('numbering')=='exam' else (q.get('section_topic') or q['topic'])
             if index and (options.get('breaks')=='question' or options.get('breaks')=='topic' and topic!=previous): content.append(PageBreak())
-            label=f"{index+1} ({q['part']}) · {q['marks']} marks"+(f" + {q['spag']} SPaG" if q['spag'] else '')
+            if paper.get('numbering')=='exam':
+                group=q['layout']['group']
+                if group!=previous_group:content.append(p(group_heading(q),heading))
+                previous_group=group
+            label=question_label(paper,q,index)+f" · {q['marks']} marks"+(f" + {q['spag']} SPaG" if q['spag'] else '')
             content += [p(label,small),p(q['prompt'])]
             if q['source_label']: content.append(p('Source: '+q['source_label'],small))
             if kind=='marking':

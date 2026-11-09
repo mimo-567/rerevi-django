@@ -74,9 +74,10 @@ def create_share(options):
     now=timezone.now();expiry=now+timedelta(days=days)
     access_token=secrets.token_urlsafe(32);delete_token=secrets.token_urlsafe(32)
     questions=[]
-    for q in paper['questions']:
+    from .numbering import question_label
+    for index,q in enumerate(paper['questions']):
         k=q['kind']+':'+q['id']
-        questions.append({'prompt':q['prompt'],'topic':q['topic'],'part':q['part'],'marks':q['marks'],'spag':q['spag'],'answer':answers.get(k,''),'self_mark':marks.get(k),'spag_mark':spag.get(k)})
+        questions.append({'display_label':question_label(paper,q,index,include_group=True),'group_title':q.get('layout',{}).get('title','') if paper.get('numbering')=='exam' else '', 'prompt':q['prompt'],'topic':q['topic'],'part':q['part'],'marks':q['marks'],'spag':q['spag'],'answer':answers.get(k,''),'self_mark':marks.get(k),'spag_mark':spag.get(k)})
     snapshot={'subject':paper.get('subject','re'),'areas':sorted({q.get('area','') for q in paper['questions']}),'version':1,'created_at':now.isoformat(),'expires_at':expiry.isoformat(),'name':name.strip(),'title':paper['title'],'component_name':paper['component_name'],'total_marks':paper['total_marks'],'questions':questions,'delete_hash':hashlib.sha256(delete_token.encode()).hexdigest()}
     encoded=json.dumps(snapshot,ensure_ascii=False).encode('utf-8')
     if len(encoded)>512000: raise ValidationError('This snapshot is too large. Save your answers as a file instead.')
