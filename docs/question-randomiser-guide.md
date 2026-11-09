@@ -70,19 +70,30 @@ If the bank doesn't have enough matching questions, reduce the number or widen t
 
 The worksheet workspace lets you pick individual questions, start from a component or topic template, or use **Pick random questions** and **Pick questions to match marks**. Apply its filters first; those buttons replace the current set. You can also edit the front page visually, preview the PDF and make worksheet versions.
 
-Use the dedicated **3. Build your paper** section to assemble a paper with blocks. A **question number container** holds the question blocks for that main question, rather like a function holding commands in a block editor. For example, container **1. Christian Beliefs** can hold a **B) Beliefs and Teachings** question, while container **2. Life and Death** holds a **C) Life and Death** question.
+## Build your paper: a separate tab for topic / type blocks
 
-1. Drag **Question number container** from the left-hand **Block palette** onto the **Paper canvas**, or click it to add one.
-2. Edit the container's number and topic heading.
-3. Find questions in the palette using the search box and A/B/C/D buttons. The palette also respects the topic, source and style filters in section 2, including omission of extra practice questions.
-4. Drag a question block inside a numbered container. Drop it on another question to insert it above, or in the bottom space to put it last.
-5. Drag a container's handle to move its whole stack. Open **Block controls** to change a subquestion label or use the move buttons and group menu. **Remove block** removes a question from the paper; if it has an answer or plan, you are asked to confirm first. Alternatively, choose a destination in **Container for Add / Move here** and use the palette's **Add** or **Move here** button without dragging.
+The worksheet workspace keeps its simpler question list, preview, answering and PDF tools. Choose the separate **Build your paper** tab above it, or use the sidebar link, when you want to design a paper layout with blocks.
 
-![The dedicated Build your paper section with a block palette on the left and numbered containers on the canvas: Christian Beliefs contains a B question, and Life and Death contains a C question.](/static/guides/randomiser-05-block-builder.png)
+The blocks represent **themes and question types, not exact questions**. For example:
 
-Component and topic templates create their numbered containers automatically. **Renumber containers in order** updates main display numbers. Your original question styles, marks, SPaG eligibility and guidance stay attached to the questions. Numbering is kept in PDFs, `.rerevi` files, saved worksheet templates, worksheet versions and shared-answer snapshots.
+- **A · Christianity** means “pick a Christianity keyword question when I build”. It does not lock the block to a keyword such as Evangelism.
+- **D · Life and Death** means “pick a matching Life and Death discussion question when I build”. It does not lock the block to a particular statement about euthanasia or another issue.
 
-After arranging your blocks, continue to **4. Preview and practise** to answer the questions, or **5. Print and download** to make a PDF. **6. Share selected answers** remains optional.
+Numbered containers act like functions in a block editor: the topic/type blocks inside are their question choices.
+
+1. Drag **Question number container** from the **Block palette** onto the **Paper canvas**, or click it to add one.
+2. Edit the container's number and heading.
+3. Choose a subject, theme and A/B/C/D type in the palette. Drag a type block into a container, or select a destination and press **Add**. You can add the same type more than once if you want several matching questions.
+4. Move whole containers or individual blocks into order. **Block controls** lets you edit a subquestion label, move a block using buttons or a menu, or remove it.
+5. Check **Omit extra practice questions** to exclude all additional practice, including AI-generated questions. Optional SPaG still follows the original questions' eligibility.
+6. Press **Build paper**. Only now does ReRevi choose the actual questions for your blocks. Build again to choose alternatives where available; your block layout stays the same.
+7. Select **Open in worksheet workspace** to see the chosen questions, type answers and make PDFs, or **Export .rerevi file** to keep the exact selection. You are asked before replacing a worksheet with written work.
+
+![The separate paper builder: numbered containers hold generic A Christianity and D Life and Death type blocks, with no exact keyword or discussion statement selected.](/static/guides/randomiser-05-topic-block-builder.png)
+
+**Start from a layout** can create a full component or one topic's block arrangement. Full component layouts add SPaG only where assessed; topic layouts leave it off by default. Your layout stays in this browser tab. Export a `.rerevi` file after building if you want to keep its exact questions.
+
+Back in **Worksheet workspace**, the original sections are **1. Your worksheet**, **2. Choose questions**, **3. Preview, order and practise**, **4. Print and download** and **5. Share selected answers**. Its existing question bank and paper/topic templates remain available. Papers opened from the builder retain their display numbering; ordinary worksheet selection still works as before.
 
 Found a confusing label or a question that needs checking? Use the question's report control or the [feedback page](/feedback/). Your feedback helps make ReRevi easier to use.
 

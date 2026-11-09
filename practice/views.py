@@ -247,6 +247,20 @@ def worksheets(request):
     return render(request,'practice/worksheets.html',{'import_requested':request.GET.get('import')=='1','paper_templates':worksheet_templates()})
 
 @require_safe
+def paper_builder(request):
+    from .paper_builder import block_catalogue
+    return render(request,'practice/paper_builder.html',{'blocks':block_catalogue(),'components':[{'id':key,**spec} for key,spec in COMPONENTS.items()]})
+
+@require_POST
+def paper_builder_generate(request):
+    from .paper_builder import generate_blueprint
+    try:
+        if len(request.body)>32000:raise ValidationError('This paper layout is too large.')
+        return JsonResponse(generate_blueprint(json.loads(request.body)))
+    except (ValueError,TypeError,ValidationError) as error:
+        return JsonResponse({'error':' '.join(error.messages) if isinstance(error,ValidationError) else 'Invalid paper layout.'},status=400)
+
+@require_safe
 def worksheet_catalogue(request):
     from .worksheets import catalogue_rows
     from .models import ResourceCollection

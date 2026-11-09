@@ -13,7 +13,7 @@ This is the current **Django application**, published separately from the earlie
 - Random selections prefer different question wording within the set and from the current set, reusing wording only when the matching question pool is exhausted.
 - Select original-year Part A questions when practising a particular paper year.
 - Build worksheets from the question bank and optionally omit additional practice.
-- Use a dedicated block palette and paper canvas: numbered containers hold question blocks as main questions and subquestions (for example 2(b)). Edit headings and display numbers, and drag questions or whole containers into place. Keyboard move controls are included; numbering survives PDFs, practice files, templates and shared answers.
+- Use the separate Build your paper tab to arrange topic/type blocks (such as A · Christianity or D · Life and Death) in numbered containers. Actual questions are selected only when you build; the worksheet workspace stays simple for viewing, answering and printing. Numbering survives PDFs, practice files, templates and shared answers.
 - Start a worksheet from a full component or individual-topic A/B/C/D template. Component papers add SPaG only to eligible questions; topic sets omit it unless explicitly enabled for an eligible topic.
 - Type answers, use a timer, reveal marking guidance and self-mark with optional SPaG where applicable.
 - Download question/answer and marking PDFs in ReRevi or Eduqas-inspired layouts.
