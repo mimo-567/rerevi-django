@@ -70,7 +70,19 @@ If the bank doesn't have enough matching questions, reduce the number or widen t
 
 The worksheet workspace lets you pick individual questions, start from a component or topic template, or use **Pick random questions** and **Pick questions to match marks**. Apply its filters first; those buttons replace the current set. You can also edit the front page visually, preview the PDF and make worksheet versions.
 
-Open **Question numbers and drag-and-drop organiser** in section 3 and enable **Use exam-style question groups** to build a tree such as **1. Christian Beliefs → (a), (b), (c), (d)**. Component and topic templates enable this automatically. Edit the main number, heading and subquestion labels, or add a new main question group. Drag questions from the bank or another group into place; drag a group handle to move the whole group. The **Up**, **Down** and group-menu controls also work without dragging. **Renumber main questions in order** updates the main display numbers. The original question styles, marks, SPaG eligibility and marking guidance stay attached to the questions. Your numbering is kept in PDFs, `.rerevi` files, saved worksheet templates, worksheet versions and shared-answer snapshots.
+Use the dedicated **3. Build your paper** section to assemble a paper with blocks. A **question number container** holds the question blocks for that main question, rather like a function holding commands in a block editor. For example, container **1. Christian Beliefs** can hold a **B) Beliefs and Teachings** question, while container **2. Life and Death** holds a **C) Life and Death** question.
+
+1. Drag **Question number container** from the left-hand **Block palette** onto the **Paper canvas**, or click it to add one.
+2. Edit the container's number and topic heading.
+3. Find questions in the palette using the search box and A/B/C/D buttons. The palette also respects the topic, source and style filters in section 2, including omission of extra practice questions.
+4. Drag a question block inside a numbered container. Drop it on another question to insert it above, or in the bottom space to put it last.
+5. Drag a container's handle to move its whole stack. Open **Block controls** to change a subquestion label or use the move buttons and group menu. **Remove block** removes a question from the paper; if it has an answer or plan, you are asked to confirm first. Alternatively, choose a destination in **Container for Add / Move here** and use the palette's **Add** or **Move here** button without dragging.
+
+![The dedicated Build your paper section with a block palette on the left and numbered containers on the canvas: Christian Beliefs contains a B question, and Life and Death contains a C question.](/static/guides/randomiser-05-block-builder.png)
+
+Component and topic templates create their numbered containers automatically. **Renumber containers in order** updates main display numbers. Your original question styles, marks, SPaG eligibility and guidance stay attached to the questions. Numbering is kept in PDFs, `.rerevi` files, saved worksheet templates, worksheet versions and shared-answer snapshots.
+
+After arranging your blocks, continue to **4. Preview and practise** to answer the questions, or **5. Print and download** to make a PDF. **6. Share selected answers** remains optional.
 
 Found a confusing label or a question that needs checking? Use the question's report control or the [feedback page](/feedback/). Your feedback helps make ReRevi easier to use.
 
