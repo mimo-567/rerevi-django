@@ -84,7 +84,16 @@ def render_article(article):
 def clean_article_html(value):
     class ArticleHTML(ContentHTML):
         def handle_starttag(self,tag,attrs):
-            if tag in {'pre','code','table','thead','tbody','tr','th','td','del','h5','h6'}:
+            if tag=='img':
+                attributes=dict(attrs)
+                try:src=safe_link(attributes.get('src') or '')
+                except ValueError:return
+                # Guide screenshots are served locally; never embed tracking URLs.
+                path=urlsplit(src).path
+                if src.startswith('/static/') and '..' not in path and path.lower().endswith(('.png','.jpg','.jpeg','.webp','.gif')):
+                    alt=escape(attributes.get('alt') or '',quote=True)
+                    self.parts.append(f'<img src="{escape(src,quote=True)}" alt="{alt}" loading="lazy" decoding="async">')
+            elif tag in {'pre','code','table','thead','tbody','tr','th','td','del','h5','h6'}:
                 self.parts.append('<'+tag+'>');self.stack.append(tag)
             else:super().handle_starttag(tag,attrs)
     parser=ArticleHTML();parser.feed(value or '');parser.close()

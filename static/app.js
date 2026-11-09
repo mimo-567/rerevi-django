@@ -14,28 +14,40 @@ function persist(){try{sessionStorage.setItem(STORAGE,JSON.stringify({version:1,
 function updateOptions(){
  const c=catalogue.find(c=>c.id===$('component').value);
  const oldSection=$('section').value;
- $('section').replaceChildren(new Option('All topics / sections','all'),...c.sections.map(s=>new Option(s[1],s[0])));
+ $('section').replaceChildren(new Option('All topics','all'),...c.sections.map(s=>new Option(s[1],s[0])));
  if([...$('section').options].some(o=>o.value===oldSection))$('section').value=oldSection;
  const oldYear=$('year').value;
  $('year').replaceChildren(new Option('Any year','all'),...c.years.map(y=>new Option(y,y)));
  if([...$('year').options].some(o=>o.value===oldYear))$('year').value=oldYear;
- $('section-field').hidden=mode==='full';$('count-field').hidden=mode==='full';$('count').required=mode!=='full';
+ $('section-field').hidden=mode==='full';$('count-field').hidden=mode==='full';$('count').required=mode!=='full';$('count').disabled=mode==='full';
  $('year-field').hidden=mode==='keywords';$('parts-field').hidden=mode!=='custom';
- $('extra-field').hidden=mode==='keywords';
+ $('extra-field').hidden=mode==='keywords';$('practice-more-options').hidden=mode==='keywords';
  const selectedYear=$('year').value!=='all';$('include-extra').disabled=selectedYear;
  $('extra-note').textContent=selectedYear?'A selected year always uses that original past paper. Extra questions are excluded.':'Untick to use official past-paper B, C and D questions only. Extra practice may have no question-specific mark scheme.';
  $('spag-field').hidden=mode==='keywords'||c.id==='component-3-islam';
  if($('spag-field').hidden)$('spag').checked=false;
- $('count-label').textContent=mode==='keywords'?'Number of keywords':'Number of questions';$('count').max=mode==='keywords'?51:30;
- $('preview-title').textContent={keywords:'Key concepts',custom:'Focused practice',full:'A full practice paper'}[mode];
+ $('count-label').textContent=mode==='keywords'?'How many keywords?':'How many questions in total?';$('count').max=mode==='keywords'?51:30;
+ $('preview-title').textContent={keywords:'Keyword practice',custom:'Short practice',full:'Full practice paper'}[mode];
  $('preview-component').textContent=c.name;
  $('preview-count').textContent=mode==='full'?`${c.minutes/60} hour${c.minutes===120?'s':''} · ${c.id==='component-1-general'?120:60} marks`:`${$('count').value} ${mode==='keywords'?'keywords':'questions'}`;
- $('selection-note').textContent=mode==='keywords'?'Different terms each time. No repeats in your set.':mode==='full'?($('year').value==='all'?'A, B, C and D in every section. Part A uses the official glossary.':'Original A, B, C and D questions from the selected past-paper year.'):'Select B, C or D. Additional practice is clearly labelled; self-marking is optional when no indicative content is supplied.';
+ const topic=$('section').selectedOptions[0]?.textContent||'All topics';
+ const parts=[...form.querySelectorAll('[name=parts]:checked')].map(n=>n.value.toUpperCase()).join(', ');
+ const fullCount=c.sections.length*4;
+ const count=Number($('count').value);
+ const style=mode==='keywords'?`${count} keyword question${count===1?'':'s'} · 2 marks each`:mode==='full'?`${fullCount} questions · A, B, C and D in every topic · ${c.minutes} minutes`:`${count} questions in total · ${parts?'styles '+parts:'choose at least one style above'}`;
+ const source=mode==='keywords'?'Official key concepts glossary':selectedYear?`Original ${$('year').value} questions`:$('include-extra').checked?'Official questions + additional practice':'Official past-paper questions only';
+ $('builder-summary').replaceChildren(el('strong','',style),el('span','',c.label+' · '+c.name+(mode==='full'?'':' · '+topic)),el('span','',source+(mode!=='keywords'&&$('spag').checked?' · SPaG on eligible questions':'')));
+ $('selection-note').textContent=mode==='full'&&selectedYear?'This uses the selected year’s original questions, including Part A. Choose “Any year” in More options for a random paper.':'Questions are picked at random. Repeated wording is avoided within the set and from your current set whenever matching alternatives are available.';
+ if(mode!=='keywords'&&!selectedYear&&$('include-extra').checked)$('selection-note').textContent+=' Additional practice is labelled and may have no question-specific indicative content. Untick it in More options to use official questions only.';
+
 }
 document.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>{
  mode=button.dataset.mode;document.querySelectorAll('[data-mode]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
  $('count').value=mode==='keywords'?8:6;updateOptions();
 }));$('component').addEventListener('change',updateOptions);$('year').addEventListener('change',updateOptions);$('count').addEventListener('input',updateOptions);
+for(const id of ['section','include-extra','spag'])$(id).addEventListener('change',updateOptions);
+form.querySelectorAll('[name=parts]').forEach(n=>n.addEventListener('change',updateOptions));
+$('build-again').addEventListener('click',()=>form.requestSubmit());
 function hasWork(){return Object.values(answers).some(a=>a.trim())||Object.keys(marks).length>0;}
 form.addEventListener('submit',async event=>{event.preventDefault();if(paper&&hasWork()){pendingBuild=true;$('replace-dialog').showModal();return;}await build();});
 async function build(){

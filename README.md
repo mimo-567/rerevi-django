@@ -9,6 +9,7 @@ This is the current **Django application**, published separately from the earlie
 ## What it does
 
 - Choose focused practice, keyword practice or a full practice paper.
+- Use clear Keywords, Short practice and Full practice paper choices, a selection summary and grouped optional filters. See the [screenshot guide](docs/question-randomiser-guide.md).
 - Random selections prefer different question wording within the set and from the current set, reusing wording only when the matching question pool is exhausted.
 - Select original-year Part A questions when practising a particular paper year.
 - Build worksheets from the question bank and optionally omit additional practice.

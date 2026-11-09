@@ -1,0 +1,61 @@
+**TL;DR:** Choose **Keywords**, **Short practice** or **Full practice paper**, pick what you want to revise, check the green summary, then press **Build my practice**. You can answer online, download a PDF or save the exact set as a `.rerevi` file.
+
+ReRevi's randomiser picks questions from its question bank. It doesn't write new questions while you use it. Here's how to get a set that suits the revision you want to do.
+
+## 1. Choose your practice type
+
+![The updated randomiser showing the three practice types, subject and topic selectors, question count and selection summary.](/static/guides/randomiser-01-choose.png)
+
+- **Keywords** gives you Part A questions worth 2 marks each. Choose a topic and how many terms you want to practise. This is useful for a quick definitions check.
+- **Short practice** lets you choose B, C and/or D questions. B questions are worth 5 marks, C questions 8, and D questions 15. You can select more than one style.
+- **Full practice paper** builds A, B, C and D questions for every topic in your chosen component. It gives you a complete paper-shaped set rather than asking you to choose a question count.
+
+Choose **Subject / component** next: Component 1, Christianity or Islam. Keywords and short practice also let you choose one **Topic** or keep **All topics** selected.
+
+## 2. Set the amount and check the summary
+
+For keywords, enter how many terms you want. For short practice, enter the **total number of questions**, then tick the styles you want.
+
+For example, 4 questions with C and D selected means **four questions altogether**, drawn from those styles. It does not mean four of each, and it doesn't guarantee an equal split. Use the worksheet workspace if you want to assemble a particular combination yourself.
+
+![Short practice set to Christianity, Beliefs and Teachings, four questions in total and styles C and D, with More options expanded.](/static/guides/randomiser-02-short-practice.png)
+
+The green summary tells you the amount, component, topic and question sources before you build. If it doesn't describe the set you want, change the controls above it.
+
+## 3. Use More options when you need them
+
+Keywords use the official glossary. For short practice and full papers, open **More options: sources, exam year and SPaG** to change the following:
+
+- **Past-paper year:** **Any year** gives the randomiser a wider pool. Selecting a particular year restricts questions to that original paper. In full-paper mode, Part A also uses that year's original keyword questions. Rebuilding a fixed-year paper may therefore give the same questions again.
+- **Include extra practice questions:** untick this for official past-paper questions only. When enabled, additional questions are clearly labelled and may have no question-specific indicative content. Additional Christianity and Islam practice includes AI-assisted questions. You can opt out here.
+- **Include SPaG marks:** this is optional for practice and applies only to eligible questions. It isn't offered for Islam.
+
+![Full Component 1 practice-paper settings with 2025 selected, a summary of 16 questions and the notice explaining that original questions will be used.](/static/guides/randomiser-04-full-paper.png)
+
+A full Component 1 practice paper has 16 questions and a suggested 120 minutes. Christianity and Islam papers have 8 questions and 60 minutes each. Those durations exclude any extra time you choose to give yourself.
+
+## 4. Build, answer and keep your work
+
+Press **Build my practice**. ReRevi takes you to the selected questions. Type your answers on the page, use the optional timer, then reveal the marking guidance and self-mark when you're ready. Missing indicative content is not an answer key; additional practice may provide general marking criteria only.
+
+![A generated practice set showing its question count, PDF and practice-file controls, optional timer and the first selected question.](/static/guides/randomiser-03-your-practice.png)
+
+Prefer paper? Use **Download PDF** or **Print**. The PDF options let you choose ReRevi or Eduqas booklet styling, a cover and extra lined pages.
+
+To keep this **exact selection**, choose **Export .rerevi file**. You can optionally include your answers and self-marks. Use **Import .rerevi file** in the sidebar to reopen it later, including on another device. Keep files containing your answers private.
+
+## Want a different selection?
+
+Press **Pick another set**, or change the settings and press **Build my practice** again. ReRevi tries to avoid repeated wording within the set and from your current set, even when the same wording appears in more than one bank record. Repeats can still happen when your filters leave too few alternatives, or when a selected year requires the original questions. This isn't a permanent record of every question you've ever practised.
+
+If you've started answering, ReRevi asks before replacing your set. Export your practice file first if you want to keep the questions and work together.
+
+If the bank doesn't have enough matching questions, reduce the number or widen the topic, style or year filters.
+
+## For more control, use Worksheet workspace
+
+The worksheet workspace lets you pick individual questions, start from a component or topic template, or use **Pick random questions** and **Pick questions to match marks**. Apply its filters first; those buttons replace the current set. You can also edit the front page visually, preview the PDF and make worksheet versions.
+
+Found a confusing label or a question that needs checking? Use the question's report control or the [feedback page](/feedback/). Your feedback helps make ReRevi easier to use.
+
+**Zafir Shirazi**
